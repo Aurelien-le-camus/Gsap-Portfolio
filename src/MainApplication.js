@@ -10,6 +10,7 @@ const MainApplication = ({ timeline }) => {
 
   const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
 
+  //Function to manipulate order of colors to get 1 2 1 2 1 or 2 1 2 1 2
   const arrangeColors = (array) => {
     const orderedColors = [];
     const color1 = "#555555";
@@ -66,7 +67,7 @@ const MainApplication = ({ timeline }) => {
     line: {
       display: "flex",
       flexDirection: "row",
-      marginBottom: "50vh",
+      marginBottom: "55vh",
     },
     square1: {
       display: "flex",
@@ -219,28 +220,33 @@ const MainApplication = ({ timeline }) => {
     },
   };
 
+  //Function to get random positions for every square animation
   const getRandomPosition = () => {
     const y = (Math.random() * 400) - 200;
     return y;
   };
 
   useEffect(() => {
+    //Animation for left door at beginning
     timeline.to(".leftDoor", 2, {
       x: '-100%',
       ease: "Power1.out",
     });
 
+    //Animation for right door at beginning
     timeline.to(".rightDoor", 2, {
       x: '100%',
       ease: "Power1.out",
     }, 0);
 
+    //Animation for title
     timeline.from(".title", 1, {
       opacity: 0,
       y: 80,
       ease: "Power3.out",
     }, 1);
 
+    //Animation for squares with text
     for (let i = 1; i <= 5; i++) {
       const y = getRandomPosition();
       timeline.from(`.square${i}`, {
@@ -250,11 +256,13 @@ const MainApplication = ({ timeline }) => {
       }, 2);
     }
 
+    //Animation for leftSide menu
     timeline.from(".menu", {
       x: '-100%',
       ease: "Power1.out",
     });
 
+    //Animation first image on left
     gsap.from(".leftImageSlide", 2, {
       opacity: 0,
       x: '-100%',
@@ -266,6 +274,7 @@ const MainApplication = ({ timeline }) => {
       ease: "Power3.out",
     }, 3);
 
+    //Animation first text zone on right
     gsap.from(".rightImageSlide", 2, {
       opacity: 0,
       x: '100%',
@@ -277,6 +286,7 @@ const MainApplication = ({ timeline }) => {
       ease: "Power3.out",
     }, 3);
 
+    //Animation second image on right
     gsap.from(".leftImageSlide2", 2, {
       opacity: 0,
       x: '-100%',
@@ -287,6 +297,7 @@ const MainApplication = ({ timeline }) => {
       ease: "Power3.out",
     }, 3);
 
+    //Animation second text zone on left
     gsap.from(".rightImageSlide2", 2, {
       opacity: 0,
       x: '100%',
@@ -298,18 +309,19 @@ const MainApplication = ({ timeline }) => {
     }, 3);
   });
 
+  //Function to scroll and navigate on the screen
   function navigateFormation() {
     const leftImageSlide = document.getElementById("leftImageSlide");
     if (leftImageSlide) {
       window.scrollTo({ top: leftImageSlide.offsetTop, behavior: 'smooth' });
     }
-  }  
+  }
 
   return (
     <div className="Rajdhani" style={styles.main}>
       <div className="leftDoor" style={styles.leftDiv} />
       <div className="rightDoor" style={styles.rightDiv} />
-      <SideMenu navigateFormation={navigateFormation}/>
+      <SideMenu navigateFormation={navigateFormation} />
       <div style={styles.container}>
         <div className="title" style={styles.welcome}>
           Bienvenue sur mon site
@@ -331,37 +343,42 @@ const MainApplication = ({ timeline }) => {
             Le Camus
           </div>
         </div>
-        <div style={{ width: '100%' }}>
-          <div id="leftImageSlide" className="leftImageSlide" style={styles.leftImageDiv} />
-          <div className="rightImageSlide" style={styles.rightImageDiv}>
-            <div className="Merriweather" style={styles.textFormationRight}>
-              Mes formations
-            </div>
-            <div className="Rajdhani" style={styles.textFormationRightDetails}>
-              <div style={{ marginTop: '22vh' }}>
-                Double certification Technological University of Dublin
+        <div style={{ height: '100vh' }}>
+          <div style={{ width: '100%', height: '42.5vh' }}>
+            <div id="leftImageSlide" className="leftImageSlide" style={styles.leftImageDiv} />
+            <div className="rightImageSlide" style={styles.rightImageDiv}>
+              <div className="Merriweather" style={styles.textFormationRight}>
+                Mes formations
+              </div>
+              <div className="Rajdhani" style={styles.textFormationRightDetails}>
+                <div style={{ marginTop: '22vh' }}>
+                  Double certification Technological University of Dublin
+                </div>
+              </div>
+              <div className="Rajdhani" style={styles.textFormationRightDetails}>
+                Epitech Nancy - Expert en technologies de l'information et de la communication
               </div>
             </div>
-            <div className="Rajdhani" style={styles.textFormationRightDetails}>
-              Epitech Nancy - Expert en technologies de l'information et de la communication
-            </div>
           </div>
-        </div>
-        <div style={{ width: '100%', marginTop: '55vh' }}>
-          <div className="leftImageSlide2" style={styles.leftImageDiv2}>
-            <div className="Merriweather" style={styles.textExperienceLeft}>
-              Mes expériences pro
-            </div>
-            <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
-              <div style={{ marginTop: '22vh' }}>
-                Assistant Pédagogique Epitech {`(3ème et 5ème année)`}
+          <div style={{ marginTop: '10vh' }}/>
+          <div style={{ width: '100%' }}>
+            <div style={{ width: '100%', height: '42.5vh' }}>
+              <div className="leftImageSlide2" style={styles.leftImageDiv2}>
+                <div className="Merriweather" style={styles.textExperienceLeft}>
+                  Mes expériences pro
+                </div>
+                <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
+                  <div style={{ marginTop: '22vh' }}>
+                    Assistant Pédagogique Epitech {`(3ème et 5ème année)`}
+                  </div>
+                </div>
+                <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
+                  Développeur WEB - English World Nancy
+                </div>
               </div>
-            </div>
-            <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
-              Développeur WEB - English World Nancy
+              <div className="rightImageSlide2" style={styles.rightImageDiv2} />
             </div>
           </div>
-          <div className="rightImageSlide2" style={styles.rightImageDiv2} />
         </div>
       </div>
     </div>
