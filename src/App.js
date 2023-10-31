@@ -1,15 +1,14 @@
 import React from "react";
-import MainApplication from "./MainApplication";
 import './App.css';
-import { gsap } from "gsap";
+import Router from "./Router";
+import { BrowserRouter } from 'react-router-dom';
 
 export default function App() {
-
-  let tl = new gsap.timeline();
-
   return (
-    <div className="hero">
-      <MainApplication timeline={tl} />
+    <div>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </div>
   );
 }

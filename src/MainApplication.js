@@ -1,225 +1,120 @@
 import React, { useEffect } from "react";
 import "./font/font.css";
-import SideMenu from "./Components/SideMenu";
+import './locomotive-scroll.css';
+import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const MainApplication = ({ timeline }) => {
+const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
 
-  gsap.registerPlugin(ScrollTrigger);
+//Function to manipulate order of colors to get 1 2 1 2 1 or 2 1 2 1 2
+const arrangeColors = (array) => {
+  const orderedColors = [];
+  const color1 = "#555555";
+  const color2 = "#777777";
+  const decider = Math.floor(Math.random() * 2) + 1;
 
-  const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
-
-  //Function to manipulate order of colors to get 1 2 1 2 1 or 2 1 2 1 2
-  const arrangeColors = (array) => {
-    const orderedColors = [];
-    const color1 = "#555555";
-    const color2 = "#777777";
-    const decider = Math.floor(Math.random() * 2) + 1;
-
-    if (decider % 2 === 0) {
-      for (let i = 0; i < array.length; i++) {
-        if (i % 2 === 0) {
-          orderedColors.push(color1);
-        } else {
-          orderedColors.push(color2);
-        }
+  if (decider % 2 === 0) {
+    for (let i = 0; i < array.length; i++) {
+      if (i % 2 === 0) {
+        orderedColors.push(color1);
+      } else {
+        orderedColors.push(color2);
       }
     }
-    else {
-      for (let i = 0; i < array.length; i++) {
-        if (i % 2 === 0) {
-          orderedColors.push(color2);
-        } else {
-          orderedColors.push(color1);
-        }
+  }
+  else {
+    for (let i = 0; i < array.length; i++) {
+      if (i % 2 === 0) {
+        orderedColors.push(color2);
+      } else {
+        orderedColors.push(color1);
       }
     }
+  }
 
-    return orderedColors;
-  };
+  return orderedColors;
+};
 
-  const orderedColors = arrangeColors(colors);
+const orderedColors = arrangeColors(colors);
 
-  const EpitechImage = "https://cibul.s3.amazonaws.com/event_journee-portes-ouvertes-epitech-nancy_448_118323.jpg";
-  const WorkingImage = "https://amio-millau.fr/assets/images/formations/FormationCAISI.webp";
+const styles = {
+  main: {
+    textAlign: "center",
+  },
+  welcome: {
+    color: "#999999",
+    fontSize: 40,
+    width: '100%',
+    marginBottom: '10%',
+  },
+  container: {
+    flexDirection: "column",
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    fontSize: "calc(10px + 2vmin)",
+    color: "white",
+    zIndex: 0,
+  },
+  line: {
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "40vh",
+  },
+  square1: {
+    display: "flex",
+    width: "200px",
+    height: "200px",
+    background: `linear-gradient(to left, ${orderedColors[0]}, #242424)`,
+    textAlign: 'center',
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  square2: {
+    display: "flex",
+    width: "200px",
+    height: "200px",
+    backgroundColor: orderedColors[1],
+    textAlign: 'center',
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  square3: {
+    display: "flex",
+    width: "200px",
+    height: "200px",
+    backgroundColor: orderedColors[2],
+    textAlign: 'center',
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  square4: {
+    display: "flex",
+    width: "200px",
+    height: "200px",
+    backgroundColor: orderedColors[3],
+    textAlign: 'center',
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  square5: {
+    display: "flex",
+    width: "200px",
+    height: "200px",
+    background: `linear-gradient(to left, #242424, ${orderedColors[4]})`,
+    marginRight: '3%',
+    textAlign: 'center',
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+};
 
-  const styles = {
-    main: {
-      textAlign: "center",
-    },
-    welcome: {
-      color: "#999999",
-      fontSize: 40,
-      width: '100%',
-      marginTop: '3%',
-      marginBottom: '10%',
-    },
-    container: {
-      flexDirection: "column",
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      fontSize: "calc(10px + 2vmin)",
-      color: "white",
-      zIndex: 0,
-    },
-    line: {
-      display: "flex",
-      flexDirection: "row",
-      marginBottom: "55vh",
-    },
-    square1: {
-      display: "flex",
-      width: "200px",
-      height: "200px",
-      background: `linear-gradient(to left, ${orderedColors[0]}, #242424)`,
-      textAlign: 'center',
-      fontSize: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    square2: {
-      display: "flex",
-      width: "200px",
-      height: "200px",
-      backgroundColor: orderedColors[1],
-      textAlign: 'center',
-      fontSize: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    square3: {
-      display: "flex",
-      width: "200px",
-      height: "200px",
-      backgroundColor: orderedColors[2],
-      textAlign: 'center',
-      fontSize: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    square4: {
-      display: "flex",
-      width: "200px",
-      height: "200px",
-      backgroundColor: orderedColors[3],
-      textAlign: 'center',
-      fontSize: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    square5: {
-      display: "flex",
-      width: "200px",
-      height: "200px",
-      background: `linear-gradient(to left, #242424, ${orderedColors[4]})`,
-      marginRight: '3%',
-      textAlign: 'center',
-      fontSize: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    leftDiv: {
-      backgroundColor: '#272829',
-      width: '55%',
-      height: '100%',
-      position: 'absolute',
-      zIndex: 1,
-      left: 0,
-      clipPath: 'polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%)',
-    },
-    rightDiv: {
-      backgroundColor: '#61677A',
-      width: '55%',
-      height: '100%',
-      position: 'absolute',
-      zIndex: 1,
-      right: 0,
-      clipPath: 'polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)',
-    },
-    leftImageDiv: {
-      backgroundColor: 'transparent',
-      width: '50%',
-      height: '50vh',
-      display: 'flex',
-      justifyContent: 'flex-start',
-      position: 'absolute',
-      backgroundImage: `url(${EpitechImage})`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      left: 0,
-      clipPath: 'polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%)',
-    },
-    rightImageDiv: {
-      backgroundColor: 'transparent',
-      border: '4px double white',
-      borderLeft: 0,
-      width: '58%',
-      height: '50vh',
-      display: 'flex',
-      position: 'absolute',
-      flexDirection: 'column',
-      backgroundPosition: 'center',
-      right: 0,
-      clipPath: 'polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)',
-    },
-    leftImageDiv2: {
-      border: '4px double white',
-      borderRight: 0,
-      backgroundColor: 'transparent',
-      width: '50%',
-      height: '50vh',
-      display: 'flex',
-      justifyContent: 'flex-start',
-      position: 'absolute',
-      flexDirection: 'column',
-      left: 0,
-      clipPath: 'polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%)',
-    },
-    rightImageDiv2: {
-      backgroundColor: 'transparent',
-      width: '58%',
-      height: '50vh',
-      display: 'flex',
-      backgroundImage: `url(${WorkingImage})`,
-      position: 'absolute',
-      backgroundPosition: 'center',
-      right: 0,
-      clipPath: 'polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)',
-    },
-    textExperienceLeft: {
-      width: '100%',
-      fontSize: 45,
-      display: 'flex',
-      justifyContent: 'flex-end',
-      marginTop: '3vh',
-      marginLeft: '-38vh',
-    },
-    textFormationRight: {
-      fontSize: 45,
-      display: 'flex',
-      justifyContent: 'flex-end',
-      marginTop: '3vh',
-      marginRight: '3vh',
-    },
-    textFormationRightDetails: {
-      fontSize: 25,
-      display: 'flex',
-      justifyContent: 'flex-end',
-      marginTop: '3vh',
-      marginRight: '3vh',
-    },
-    textExperienceLeftDetails: {
-      fontSize: 25,
-      display: 'flex',
-      justifyContent: 'flex-start',
-      marginTop: '3vh',
-      marginLeft: '3vh',
-    },
-  };
-
+const MainApplication = () => {
   //Function to get random positions for every square animation
   const getRandomPosition = () => {
     const y = (Math.random() * 400) - 200;
@@ -227,20 +122,10 @@ const MainApplication = ({ timeline }) => {
   };
 
   useEffect(() => {
-    //Animation for left door at beginning
-    timeline.to(".leftDoor", 2, {
-      x: '-100%',
-      ease: "Power1.out",
-    });
-
-    //Animation for right door at beginning
-    timeline.to(".rightDoor", 2, {
-      x: '100%',
-      ease: "Power1.out",
-    }, 0);
+    const tl = new gsap.timeline();
 
     //Animation for title
-    timeline.from(".title", 1, {
+    tl.from(".title", 1, {
       opacity: 0,
       y: 80,
       ease: "Power3.out",
@@ -249,136 +134,51 @@ const MainApplication = ({ timeline }) => {
     //Animation for squares with text
     for (let i = 1; i <= 5; i++) {
       const y = getRandomPosition();
-      timeline.from(`.square${i}`, {
+      tl.from(`.square${i}`, {
         opacity: 0,
         y,
         ease: "Power3.out",
       }, 2);
     }
-
-    //Animation for leftSide menu
-    timeline.from(".menu", {
-      x: '-100%',
-      ease: "Power1.out",
-    });
-
-    //Animation first image on left
-    gsap.from(".leftImageSlide", 2, {
-      opacity: 0,
-      x: '-100%',
-      scrollTrigger: {
-        end: '50%',
-        trigger: "#leftImageSlide",
-        scrub: true,
-      },
-      ease: "Power3.out",
-    }, 3);
-
-    //Animation first text zone on right
-    gsap.from(".rightImageSlide", 2, {
-      opacity: 0,
-      x: '100%',
-      scrollTrigger: {
-        end: '50%',
-        trigger: "#rightImageSlide",
-        scrub: true,
-      },
-      ease: "Power3.out",
-    }, 3);
-
-    //Animation second image on right
-    gsap.from(".leftImageSlide2", 2, {
-      opacity: 0,
-      x: '-100%',
-      scrollTrigger: {
-        trigger: "#leftImageSlide2",
-        scrub: true,
-      },
-      ease: "Power3.out",
-    }, 3);
-
-    //Animation second text zone on left
-    gsap.from(".rightImageSlide2", 2, {
-      opacity: 0,
-      x: '100%',
-      scrollTrigger: {
-        trigger: "#rightImageSlide2",
-        scrub: true,
-      },
-      ease: "Power3.out",
-    }, 3);
   });
 
-  //Function to scroll and navigate on the screen
-  function navigateFormation() {
-    const leftImageSlide = document.getElementById("leftImageSlide");
-    if (leftImageSlide) {
-      window.scrollTo({ top: leftImageSlide.offsetTop, behavior: 'smooth' });
-    }
-  }
+  let scroll = null;
+
+  useEffect(() => {
+    scroll = createScroll();
+
+    return () => {
+      if (scroll) {
+        scroll.destroy();
+      }
+    };
+  }, []);
 
   return (
-    <div className="Rajdhani" style={styles.main}>
-      <div className="leftDoor" style={styles.leftDiv} />
-      <div className="rightDoor" style={styles.rightDiv} />
-      <SideMenu navigateFormation={navigateFormation} />
-      <div style={styles.container}>
+    <div data-scroll-container className="Rajdhani" style={styles.main}>
+      <div data-scroll-section style={styles.container}>
         <div className="title" style={styles.welcome}>
           Bienvenue sur mon site
         </div>
         <div style={styles.line}>
-          <div className="square1" style={styles.square1}>
+          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square1" style={styles.square1}>
             Salut
           </div>
-          <div className="square2" style={styles.square2}>
+          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square2" style={styles.square2}>
             je
           </div>
-          <div className="square3" style={styles.square3}>
+          <div data-scroll data-scroll-speed="4" data-scroll-position="top" className="square3" style={styles.square3}>
             suis
           </div>
-          <div className="square4" style={styles.square4}>
+          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square4" style={styles.square4}>
             Aurélien
           </div>
-          <div className="square5" style={styles.square5}>
+          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square5" style={styles.square5}>
             Le Camus
           </div>
         </div>
-        <div style={{ height: '100vh' }}>
-          <div style={{ width: '100%', height: '42.5vh' }}>
-            <div id="leftImageSlide" className="leftImageSlide" style={styles.leftImageDiv} />
-            <div className="rightImageSlide" style={styles.rightImageDiv}>
-              <div className="Merriweather" style={styles.textFormationRight}>
-                Mes formations
-              </div>
-              <div className="Rajdhani" style={styles.textFormationRightDetails}>
-                <div style={{ marginTop: '22vh' }}>
-                  Double certification Technological University of Dublin
-                </div>
-              </div>
-              <div className="Rajdhani" style={styles.textFormationRightDetails}>
-                Epitech Nancy - Expert en technologies de l'information et de la communication
-              </div>
-            </div>
-          </div>
-          <div style={{ marginTop: '10vh' }}/>
-          <div style={{ width: '100%' }}>
-            <div style={{ width: '100%', height: '42.5vh' }}>
-              <div className="leftImageSlide2" style={styles.leftImageDiv2}>
-                <div className="Merriweather" style={styles.textExperienceLeft}>
-                  Mes expériences pro
-                </div>
-                <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
-                  <div style={{ marginTop: '22vh' }}>
-                    Assistant Pédagogique Epitech {`(3ème et 5ème année)`}
-                  </div>
-                </div>
-                <div className="Rajdhani" style={styles.textExperienceLeftDetails}>
-                  Développeur WEB - English World Nancy
-                </div>
-              </div>
-              <div className="rightImageSlide2" style={styles.rightImageDiv2} />
-            </div>
-          </div>
+        <div className="Projects" style={{ height: '100vh' }}>
+          DIV DE 100H
         </div>
       </div>
     </div>

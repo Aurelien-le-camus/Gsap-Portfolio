@@ -1,72 +1,86 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
+import { gsap } from 'gsap';
 import "../font/font.css"
 
-const SideMenu = ({ navigateFormation }) => {
+const styles = {
+  topMenu: {
+    position: "fixed",
+    top: 0,
+    height: "75px",
+    width: "100%",
+    backgroundColor: "#333333",
+    background: 'linear-gradient(to bottom, #333333, #242424), linear-gradient(to left, #333333, #242424), linear-gradient(to right, #333333, #242424)',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  button: {
+    backgroundColor: "transparent",
+    border: "none",
+    color: "#777777",
+    fontSize: "18px",
+    padding: "10px",
+    margin: "0 30px",
+    cursor: "pointer",
+  },
+};
 
-  const styles = {
-    sideMenu: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      height: "200%",
-      width: "150px",
-      backgroundColor: "#333333",
-      background: "linear-gradient(to right, #333333, #242424)",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "center",
-    },
-    button: {
-      backgroundColor: "transparent",
-      border: "none",
-      color: "#777777",
-      fontSize: "18px",
-      padding: "10px",
-      margin: "10px 0",
-      cursor: "pointer",
-    },
-  };
+const TopMenu = () => {
 
-  const handleHomeClick = () => {
-  };
+  const navigate = useNavigate();
 
-  const handleExperiencesClick = () => {
-    navigateFormation();
-  };
+  useEffect(() => {
+    const tl = new gsap.timeline();
 
-  const handleProjectsClick = () => {
-  };
-
-  const handleContactClick = () => {
-  };
+    //Animation for leftSide menu
+    tl.from(".top-menu", 1, {
+      y: '-100%',
+      ease: "Power3.out",
+    });
+  }, []);
 
   return (
-    <div className="menu" style={styles.sideMenu}>
-      <div style={{ position: 'fixed', top: 0 }}>
-        <div style={{ width: '100%' }}>
-          <button className="Rajdhani" onClick={handleHomeClick} style={styles.button}>
+    <div>
+      <div className="top-menu" style={styles.topMenu}>
+        <div style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
+          <button
+            className="Rajdhani"
+            onClick={() => navigate("/")}
+            style={styles.button}
+          >
             Accueil
           </button>
-        </div>
-        <div style={{ width: '100%' }}>
-          <button className="Rajdhani" onClick={handleExperiencesClick} style={styles.button}>
+          <button
+            className="Rajdhani"
+            onClick={() => navigate("/formation")}
+            style={styles.button}
+          >
             Mes expériences
           </button>
-        </div>
-        <div style={{ width: '100%' }}>
-          <button className="Rajdhani" onClick={handleProjectsClick} style={styles.button}>
+          <button
+            className="Rajdhani"
+            onClick={() => navigate("/projects")}
+            style={styles.button}
+          >
             Mes projets
           </button>
-        </div>
-        <div style={{ width: '100%' }}>
-          <button className="Rajdhani" onClick={handleContactClick} style={styles.button}>
+          <button
+            className="Rajdhani"
+            onClick={() => navigate("/")}
+            style={styles.button}
+          >
             Me contacter
           </button>
         </div>
+      </div>
+      <div style={{ minHeight: "100vh", marginTop: '100px' }}>
+        <Outlet />
       </div>
     </div>
   );
 };
 
-export default SideMenu;
+export default TopMenu;
