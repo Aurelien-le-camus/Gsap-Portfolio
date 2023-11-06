@@ -76,7 +76,7 @@ const TopMenu = () => {
           </button>
         </div>
       </div>
-      <div style={{ minHeight: "100vh", marginTop: '100px' }}>
+      <div style={{ minHeight: "100vh", marginTop: '75px' }}>
         <Outlet />
       </div>
     </div>

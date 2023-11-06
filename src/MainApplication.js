@@ -3,6 +3,10 @@ import "./font/font.css";
 import './locomotive-scroll.css';
 import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
+import Background from "./images/Background.png";
+import FrontLayer from "./images/FrontLayer.png";
+import MidLayer from "./images/MidLayer.png";
+import MoonLayer from "./images/FinalMoon.png";
 
 const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
 const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
@@ -43,10 +47,10 @@ const styles = {
     textAlign: "center",
   },
   welcome: {
-    color: "#999999",
-    fontSize: 50,
+    fontSize: 150,
     width: '100%',
     marginBottom: '10%',
+    marginTop: '20%',
   },
   container: {
     flexDirection: "column",
@@ -129,12 +133,31 @@ const MainApplication = () => {
   useEffect(() => {
     const tl = new gsap.timeline();
 
+    //Animation for different levels of layer
+    tl.from(".frontLayer", 1, {
+      opacity: 0,
+      y: 100,
+      ease: "Power3.out",
+    }, 1);
+
+    tl.from(".midLayer", 1, {
+      opacity: 0,
+      y: 100,
+      ease: "Power3.out",
+    }, 1.4);
+
+    tl.from(".moonLayer", 1, {
+      opacity: 0,
+      y: -100,
+      ease: "Power3.out",
+    }, 1.8);
+
     //Animation for title
     tl.from(".title", 1, {
       opacity: 0,
-      y: 80,
+      y: 100,
       ease: "Power3.out",
-    }, 1);
+    }, 3);
 
     //Animation for squares with text
     for (let i = 1; i <= 5; i++) {
@@ -147,23 +170,25 @@ const MainApplication = () => {
     }
   }, []);
 
-  let scroll = null;
+  //let scroll = null;
 
-  useEffect(() => {
+  //SCROLL CREATION
+  /*useEffect(() => {
     scroll = createScroll();
     return () => {
       if (scroll) {
         scroll.destroy();
       }
     };
-  }, []);
+  }, []);*/
 
+  // Animation for the text of welcoming
   useEffect(() => {
     const changeTitleWithFade = () => {
       setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length); // Mise à jour fonctionnelle de currentTitleIndex
       const nextTitleIndex = (currentTitleIndex + 1) % titles.length;
       const titleElement = document.querySelector(".title");
-  
+
       gsap.to(titleElement, {
         opacity: 0,
         x: "-15%",
@@ -188,29 +213,29 @@ const MainApplication = () => {
         },
       });
     };
-  
+
     const titleChangeInterval = setInterval(changeTitleWithFade, 4000);
-  
+
     return () => {
       clearInterval(titleChangeInterval);
     };
-  }, [currentTitleIndex]); // Ajoutez currentTitleIndex comme dépendance  
-  
+  }, [currentTitleIndex]);
+
   return (
-    <div data-scroll-container className="Rajdhani" style={styles.main}>
-      <div data-scroll-section style={styles.container}>
-        <div className="title" style={styles.welcome}>
-          {currentTitle}
-        </div>
-        <div style={styles.line}>
-          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square1" style={styles.square1} />
-          <div data-scroll data-scroll-speed="2.5" data-scroll-position="top" className="square2" style={styles.square2} />
-          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square3" style={styles.square3} />
-          <div data-scroll data-scroll-speed="2.5" data-scroll-position="top" className="square4" style={styles.square4} />
-          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square5" style={styles.square5} />
-        </div>
-        <div className="Projects" style={{ height: '100vh' }}>
-          DIV DE 100H
+    <div style={styles.main}>
+      <div className="backgroundLayer" style={{ backgroundImage: `url(${Background})`, zIndex: '-1' }}>
+        <div className="frontLayer" style={{ backgroundImage: `url(${FrontLayer})`, zIndex: '1' }}>
+          <div className="midLayer" style={{ backgroundImage: `url(${MidLayer})`, zIndex: '0' }}>
+            <div className="moonLayer" style={{ backgroundImage: `url(${MoonLayer})` }}>
+              <div className="CormorantSC">
+                <div style={styles.container}>
+                  <div className="title" style={styles.welcome}>
+                    {currentTitle}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

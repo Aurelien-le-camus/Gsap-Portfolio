@@ -13,3 +13,11 @@
 .Merriweather {
     font-family: Merriweather;
 }
+
+@font-face {
+    font-family: CormorantSC;
+    src: url(./CormorantSC-Light.ttf);
+}
+.CormorantSC {
+    font-family: CormorantSC-Light;
+}
