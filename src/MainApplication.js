@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./font/font.css";
 import './locomotive-scroll.css';
 import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
 
 const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
+const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
 
 //Function to manipulate order of colors to get 1 2 1 2 1 or 2 1 2 1 2
 const arrangeColors = (array) => {
@@ -43,7 +44,7 @@ const styles = {
   },
   welcome: {
     color: "#999999",
-    fontSize: 40,
+    fontSize: 50,
     width: '100%',
     marginBottom: '10%',
   },
@@ -115,6 +116,10 @@ const styles = {
 };
 
 const MainApplication = () => {
+
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
+
   //Function to get random positions for every square animation
   const getRandomPosition = () => {
     const y = (Math.random() * 400) - 200;
@@ -140,13 +145,12 @@ const MainApplication = () => {
         ease: "Power3.out",
       }, 2);
     }
-  });
+  }, []);
 
   let scroll = null;
 
   useEffect(() => {
     scroll = createScroll();
-
     return () => {
       if (scroll) {
         scroll.destroy();
@@ -154,28 +158,56 @@ const MainApplication = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const changeTitleWithFade = () => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length); // Mise à jour fonctionnelle de currentTitleIndex
+      const nextTitleIndex = (currentTitleIndex + 1) % titles.length;
+      const titleElement = document.querySelector(".title");
+  
+      gsap.to(titleElement, {
+        opacity: 0,
+        x: "-15%",
+        duration: 1,
+        onComplete: () => {
+          setCurrentTitle(titles[nextTitleIndex]);
+          gsap.set(titleElement, { x: "15%" });
+          setTimeout(() => {
+            gsap.fromTo(
+              titleElement,
+              {
+                opacity: 0,
+                x: "15%",
+              },
+              {
+                opacity: 1,
+                duration: 1,
+                x: 0,
+              }
+            );
+          }, 1000); // Pause de 1 seconde
+        },
+      });
+    };
+  
+    const titleChangeInterval = setInterval(changeTitleWithFade, 4000);
+  
+    return () => {
+      clearInterval(titleChangeInterval);
+    };
+  }, [currentTitleIndex]); // Ajoutez currentTitleIndex comme dépendance  
+  
   return (
     <div data-scroll-container className="Rajdhani" style={styles.main}>
       <div data-scroll-section style={styles.container}>
         <div className="title" style={styles.welcome}>
-          Bienvenue sur mon site
+          {currentTitle}
         </div>
         <div style={styles.line}>
-          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square1" style={styles.square1}>
-            Salut
-          </div>
-          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square2" style={styles.square2}>
-            je
-          </div>
-          <div data-scroll data-scroll-speed="4" data-scroll-position="top" className="square3" style={styles.square3}>
-            suis
-          </div>
-          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square4" style={styles.square4}>
-            Aurélien
-          </div>
-          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square5" style={styles.square5}>
-            Le Camus
-          </div>
+          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square1" style={styles.square1} />
+          <div data-scroll data-scroll-speed="2.5" data-scroll-position="top" className="square2" style={styles.square2} />
+          <div data-scroll data-scroll-speed="3" data-scroll-position="top" className="square3" style={styles.square3} />
+          <div data-scroll data-scroll-speed="2.5" data-scroll-position="top" className="square4" style={styles.square4} />
+          <div data-scroll data-scroll-speed="2" data-scroll-position="top" className="square5" style={styles.square5} />
         </div>
         <div className="Projects" style={{ height: '100vh' }}>
           DIV DE 100H
