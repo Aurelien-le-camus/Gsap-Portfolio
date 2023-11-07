@@ -37,13 +37,13 @@ const MainApplication = () => {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
 
-  const green = "https://drive.google.com/uc?export=view&id=1kWjJEd_Er87CwnnCHHYikIfRMsgnnxEn";
+  const backLayer = "https://drive.google.com/uc?export=view&id=12bLlPoKinlnszd-EGkpD_Khs33LPnI4k";
   const firstLayer = "https://drive.google.com/uc?export=view&id=1McVINKlepyjtPjHizWVFkwkX6JWaU9js";
   const midLayer = "https://drive.google.com/uc?export=view&id=1eWCHMXFHfDlgafwAZk6TGRDVO-ot6DDq";
   const moonLayer = "https://drive.google.com/uc?export=view&id=1OQ9ROPiPr1TrgbLOGQb0dDlG8lW4Efre";
 
   useEffect(() => {
-    if (!green) {
+    if (!backLayer) {
       return;
     }
 
@@ -79,7 +79,7 @@ const MainApplication = () => {
       y: 100,
       ease: "Power3.out",
     }, 3);
-  }, [green]);
+  }, [backLayer]);
 
   let scroll = null;
 
@@ -134,7 +134,7 @@ const MainApplication = () => {
   return (
     <div data-scroll-container style={styles.main}>
       <div style={{ postion: 'relative' }}>
-        <div className="backgroundLayer" style={{ backgroundImage: `url(${green})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
+        <div className="backgroundLayer" style={{ backgroundImage: `url(${backLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
         <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
           <div className="CormorantSC">
             <div style={styles.container}>
