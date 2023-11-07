@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./font/font.css";
-//import './locomotive-scroll.css';
-//import createScroll from "./locomotive-scroll-config.js";
+import './locomotive-scroll.css';
+import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
 
 const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
@@ -12,7 +12,6 @@ const styles = {
     display: "flex",
     fontSize: "calc(10px + 2vmin)",
     color: "white",
-    overflowY: 'hidden',
   },
   welcome: {
     fontSize: 150,
@@ -37,7 +36,6 @@ const MainApplication = () => {
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const green = "https://drive.google.com/uc?export=view&id=1kWjJEd_Er87CwnnCHHYikIfRMsgnnxEn";
   const firstLayer = "https://drive.google.com/uc?export=view&id=1McVINKlepyjtPjHizWVFkwkX6JWaU9js";
@@ -83,17 +81,16 @@ const MainApplication = () => {
     }, 3);
   }, [green]);
 
-  //let scroll = null;
+  let scroll = null;
 
-  //SCROLL CREATION
-  /*useEffect(() => {
+  useEffect(() => {
     scroll = createScroll();
     return () => {
       if (scroll) {
         scroll.destroy();
       }
     };
-  }, []);*/
+  }, []);
 
   // Animation for the text of welcoming
   useEffect(() => {
@@ -135,7 +132,7 @@ const MainApplication = () => {
   }, [currentTitleIndex]);
 
   return (
-    <div style={styles.main}>
+    <div data-scroll-container style={styles.main}>
       <div style={{ postion: 'relative' }}>
         <div className="backgroundLayer" style={{ backgroundImage: `url(${green})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
         <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
