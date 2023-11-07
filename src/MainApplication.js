@@ -1,56 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./font/font.css";
-import './locomotive-scroll.css';
-import createScroll from "./locomotive-scroll-config.js";
+//import './locomotive-scroll.css';
+//import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
-import Background from "./images/Background.png";
-import FrontLayer from "./images/FrontLayer.png";
-import MidLayer from "./images/MidLayer.png";
-import MoonLayer from "./images/FinalMoon.png";
 
-const colors = ["#777777", "#555555", "#777777", "#555555", "#777777"];
 const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
-
-//Function to manipulate order of colors to get 1 2 1 2 1 or 2 1 2 1 2
-const arrangeColors = (array) => {
-  const orderedColors = [];
-  const color1 = "#555555";
-  const color2 = "#777777";
-  const decider = Math.floor(Math.random() * 2) + 1;
-
-  if (decider % 2 === 0) {
-    for (let i = 0; i < array.length; i++) {
-      if (i % 2 === 0) {
-        orderedColors.push(color1);
-      } else {
-        orderedColors.push(color2);
-      }
-    }
-  }
-  else {
-    for (let i = 0; i < array.length; i++) {
-      if (i % 2 === 0) {
-        orderedColors.push(color2);
-      } else {
-        orderedColors.push(color1);
-      }
-    }
-  }
-
-  return orderedColors;
-};
-
-const orderedColors = arrangeColors(colors);
 
 const styles = {
   main: {
-    textAlign: "center",
+    flexDirection: "column",
+    display: "flex",
+    fontSize: "calc(10px + 2vmin)",
+    color: "white",
+    overflowY: 'hidden',
   },
   welcome: {
     fontSize: 150,
     width: '100%',
     marginBottom: '10%',
-    marginTop: '20%',
+    marginTop: '10%',
   },
   container: {
     flexDirection: "column",
@@ -59,63 +27,9 @@ const styles = {
     alignItems: "center",
     fontSize: "calc(10px + 2vmin)",
     color: "white",
+    overflowX: 'hidden',
+    textAlign: 'center',
     zIndex: 0,
-  },
-  line: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: "40vh",
-  },
-  square1: {
-    display: "flex",
-    width: "200px",
-    height: "200px",
-    background: `linear-gradient(to left, ${orderedColors[0]}, #242424)`,
-    textAlign: 'center',
-    fontSize: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  square2: {
-    display: "flex",
-    width: "200px",
-    height: "200px",
-    backgroundColor: orderedColors[1],
-    textAlign: 'center',
-    fontSize: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  square3: {
-    display: "flex",
-    width: "200px",
-    height: "200px",
-    backgroundColor: orderedColors[2],
-    textAlign: 'center',
-    fontSize: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  square4: {
-    display: "flex",
-    width: "200px",
-    height: "200px",
-    backgroundColor: orderedColors[3],
-    textAlign: 'center',
-    fontSize: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  square5: {
-    display: "flex",
-    width: "200px",
-    height: "200px",
-    background: `linear-gradient(to left, #242424, ${orderedColors[4]})`,
-    marginRight: '3%',
-    textAlign: 'center',
-    fontSize: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 };
 
@@ -123,18 +37,27 @@ const MainApplication = () => {
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  //Function to get random positions for every square animation
-  const getRandomPosition = () => {
-    const y = (Math.random() * 400) - 200;
-    return y;
-  };
+  const green = "https://drive.google.com/uc?export=view&id=1kWjJEd_Er87CwnnCHHYikIfRMsgnnxEn";
+  const firstLayer = "https://drive.google.com/uc?export=view&id=1McVINKlepyjtPjHizWVFkwkX6JWaU9js";
+  const midLayer = "https://drive.google.com/uc?export=view&id=1eWCHMXFHfDlgafwAZk6TGRDVO-ot6DDq";
+  const moonLayer = "https://drive.google.com/uc?export=view&id=1OQ9ROPiPr1TrgbLOGQb0dDlG8lW4Efre";
 
   useEffect(() => {
+    if (!green) {
+      return;
+    }
+
     const tl = new gsap.timeline();
 
+    tl.from(".backgroundLayer", 1, {
+      opacity: 0,
+      ease: "Power3.out",
+    }, 2);
+
     //Animation for different levels of layer
-    tl.from(".frontLayer", 1, {
+    tl.from(".firstLayer", 1, {
       opacity: 0,
       y: 100,
       ease: "Power3.out",
@@ -158,17 +81,7 @@ const MainApplication = () => {
       y: 100,
       ease: "Power3.out",
     }, 3);
-
-    //Animation for squares with text
-    for (let i = 1; i <= 5; i++) {
-      const y = getRandomPosition();
-      tl.from(`.square${i}`, {
-        opacity: 0,
-        y,
-        ease: "Power3.out",
-      }, 2);
-    }
-  }, []);
+  }, [green]);
 
   //let scroll = null;
 
@@ -223,20 +136,19 @@ const MainApplication = () => {
 
   return (
     <div style={styles.main}>
-      <div className="backgroundLayer" style={{ backgroundImage: `url(${Background})`, zIndex: '-1' }}>
-        <div className="frontLayer" style={{ backgroundImage: `url(${FrontLayer})`, zIndex: '1' }}>
-          <div className="midLayer" style={{ backgroundImage: `url(${MidLayer})`, zIndex: '0' }}>
-            <div className="moonLayer" style={{ backgroundImage: `url(${MoonLayer})` }}>
-              <div className="CormorantSC">
-                <div style={styles.container}>
-                  <div className="title" style={styles.welcome}>
-                    {currentTitle}
-                  </div>
-                </div>
+      <div style={{ postion: 'relative' }}>
+        <div className="backgroundLayer" style={{ backgroundImage: `url(${green})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
+        <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
+          <div className="CormorantSC">
+            <div style={styles.container}>
+              <div className="title" style={styles.welcome}>
+                {currentTitle}
               </div>
             </div>
           </div>
         </div>
+        <div className="midLayer" style={{ backgroundImage: `url(${midLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
+        <div className="moonLayer" style={{ backgroundImage: `url(${moonLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }} />
       </div>
     </div>
   );

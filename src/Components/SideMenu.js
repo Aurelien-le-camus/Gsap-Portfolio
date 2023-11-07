@@ -15,7 +15,8 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1,
+    zIndex: 5,
+    opacity: 0.8,
   },
   button: {
     backgroundColor: "transparent",
@@ -76,7 +77,7 @@ const TopMenu = () => {
           </button>
         </div>
       </div>
-      <div style={{ minHeight: "100vh", marginTop: '75px' }}>
+      <div>
         <Outlet />
       </div>
     </div>
