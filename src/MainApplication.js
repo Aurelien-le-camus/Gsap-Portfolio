@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import GlassOrb from "./Components/GlassOrb";
 import "./particles.css";
 
-const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
+const titles = ["Bienvenue", "Welcome", "Willkommen", "Benvenuto"];
 
 const styles = {
   main: {
@@ -14,13 +14,11 @@ const styles = {
     display: "flex",
     fontSize: "calc(10px + 2vmin)",
     color: "white",
-    background: 'rgb(50,63,63)',
     background: 'linear-gradient(0deg, rgba(50,63,63,1) 29%, rgba(36,36,36,1) 74%)'
   },
   welcome: {
     fontSize: 150,
     width: '100%',
-    marginBottom: '10%',
     marginTop: '10%',
   },
   container: {
@@ -115,9 +113,16 @@ const MainApplication = () => {
     //Animation for title
     tl.from(".title", 1, {
       opacity: 0,
-      y: 100,
+      y: -100,
       ease: "Power3.out",
     }, 3);
+
+    tl.from(".subTitle", 1, {
+      opacity: 0,
+      y: -100,
+      ease: "Power3.out",
+    }, 3.5);
+  
   }, [firstLayer]);
 
   let scroll = null;
@@ -184,17 +189,17 @@ const MainApplication = () => {
           <div className="Rajdhani">
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute' }}>
               <div className="glassLeftFar" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"Un passioné"} />
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"passioné"} />
               </div>
               <div className="glassLeftClose" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"Un déterminé"} />
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"déterminé"} />
               </div>
               <div style={{ width: '20%' }} />
               <div className="glassRightClose" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"Un acharné"} />
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"acharné"} />
               </div>
               <div className="glassRightFar" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"Un perfectionniste"} />
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"perfectionniste"} />
               </div>
             </div>
           </div>
@@ -202,6 +207,9 @@ const MainApplication = () => {
             <div style={styles.container}>
               <div className="title" style={styles.welcome}>
                 {currentTitle}
+              </div>
+              <div className="subTitle" style={{ fontSize: 45, opacity: 0.8 }}>
+                Je suis...
               </div>
             </div>
           </div>

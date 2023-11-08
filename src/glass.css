@@ -28,6 +28,7 @@
 .glassOrb:hover {
   transition: transform 1.5s ease;
   box-shadow: 0 3px 4px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
 }
 
 .glassOrbText {
