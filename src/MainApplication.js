@@ -3,6 +3,8 @@ import "./font/font.css";
 import './locomotive-scroll.css';
 import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
+import GlassOrb from "./Components/GlassOrb";
+import "./particles.css";
 
 const titles = ["Bienvenue", "Welcome", "Willkommen", "Bienvenuto"];
 
@@ -12,6 +14,8 @@ const styles = {
     display: "flex",
     fontSize: "calc(10px + 2vmin)",
     color: "white",
+    background: 'rgb(50,63,63)',
+    background: 'linear-gradient(0deg, rgba(50,63,63,1) 29%, rgba(36,36,36,1) 74%)'
   },
   welcome: {
     fontSize: 150,
@@ -49,13 +53,12 @@ const MainApplication = () => {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
 
-  const backLayer = "https://drive.google.com/uc?export=view&id=12bLlPoKinlnszd-EGkpD_Khs33LPnI4k";
   const firstLayer = "https://drive.google.com/uc?export=view&id=1McVINKlepyjtPjHizWVFkwkX6JWaU9js";
   const midLayer = "https://drive.google.com/uc?export=view&id=1eWCHMXFHfDlgafwAZk6TGRDVO-ot6DDq";
   const moonLayer = "https://drive.google.com/uc?export=view&id=1OQ9ROPiPr1TrgbLOGQb0dDlG8lW4Efre";
 
   useEffect(() => {
-    if (!backLayer) {
+    if (!firstLayer) {
       return;
     }
 
@@ -64,7 +67,7 @@ const MainApplication = () => {
     tl.from(".backgroundLayer", 1, {
       opacity: 0,
       ease: "Power3.out",
-    }, 2);
+    }, 2.5);
 
     //Animation for different levels of layer
     tl.from(".firstLayer", 1, {
@@ -115,7 +118,7 @@ const MainApplication = () => {
       y: 100,
       ease: "Power3.out",
     }, 3);
-  }, [backLayer]);
+  }, [firstLayer]);
 
   let scroll = null;
 
@@ -137,25 +140,19 @@ const MainApplication = () => {
 
       gsap.to(titleElement, {
         opacity: 0,
-        x: "-15%",
         duration: 1,
         onComplete: () => {
           setCurrentTitle(titles[nextTitleIndex]);
-          gsap.set(titleElement, { x: "15%" });
-          setTimeout(() => {
-            gsap.fromTo(
-              titleElement,
-              {
-                opacity: 0,
-                x: "15%",
-              },
-              {
-                opacity: 1,
-                duration: 1,
-                x: 0,
-              }
-            );
-          }, 1000); // Pause de 1 seconde
+          gsap.fromTo(
+            titleElement,
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
+              duration: 1,
+            }
+          );
         },
       });
     };
@@ -167,33 +164,37 @@ const MainApplication = () => {
     };
   }, [currentTitleIndex]);
 
+  const circles = [];
+
+  for (let i = 0; i < 30; i++) {
+    circles.push(
+      <div key={i} className="circle-container">
+        <div className="circle"></div>
+      </div>
+    );
+  }
+  
   return (
     <div data-scroll-container style={styles.main}>
+      <div className="backgroundLayer">
+        {circles}
+      </div>
       <div style={{ postion: 'relative' }}>
-        <div className="backgroundLayer" style={{ backgroundImage: `url(${backLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
         <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
           <div className="Rajdhani">
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute' }}>
               <div className="glassLeftFar" style={styles.glassSpace}>
-                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '55%' }}>
-                  Me découvrir
-                </div>
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"Un passioné"} />
               </div>
               <div className="glassLeftClose" style={styles.glassSpace}>
-                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '45%' }}>
-                  Me découvrir
-                </div>
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"Un déterminé"} />
               </div>
               <div style={{ width: '20%' }} />
               <div className="glassRightClose" style={styles.glassSpace}>
-                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '45%' }}>
-                  Me découvrir
-                </div>
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"Un acharné"} />
               </div>
               <div className="glassRightFar" style={styles.glassSpace}>
-                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '55%' }}>
-                  Me découvrir
-                </div>
+                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"Un perfectionniste"} />
               </div>
             </div>
           </div>
