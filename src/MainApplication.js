@@ -30,6 +30,18 @@ const styles = {
     textAlign: 'center',
     zIndex: 0,
   },
+  glassSpace: {
+    width: '20%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  glassText: {
+    borderRadius: 100,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 };
 
 const MainApplication = () => {
@@ -72,6 +84,30 @@ const MainApplication = () => {
       y: -100,
       ease: "Power3.out",
     }, 1.8);
+
+    tl.from(".glassLeftFar", 1, {
+      opacity: 0,
+      x: '-100%',
+      ease: "Power3.out",
+    }, 2);
+
+    tl.from(".glassLeftClose", 1, {
+      opacity: 0,
+      x: '-120%',
+      ease: "Power3.out",
+    }, 2.5);
+
+    tl.from(".glassRightFar", 1, {
+      opacity: 0,
+      x: '100%',
+      ease: "Power3.out",
+    }, 2);
+
+    tl.from(".glassRightClose", 1, {
+      opacity: 0,
+      x: '120%',
+      ease: "Power3.out",
+    }, 2.5);
 
     //Animation for title
     tl.from(".title", 1, {
@@ -136,6 +172,31 @@ const MainApplication = () => {
       <div style={{ postion: 'relative' }}>
         <div className="backgroundLayer" style={{ backgroundImage: `url(${backLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', }} />
         <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
+          <div className="Rajdhani">
+            <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute' }}>
+              <div className="glassLeftFar" style={styles.glassSpace}>
+                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '55%' }}>
+                  Me découvrir
+                </div>
+              </div>
+              <div className="glassLeftClose" style={styles.glassSpace}>
+                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '45%' }}>
+                  Me découvrir
+                </div>
+              </div>
+              <div style={{ width: '20%' }} />
+              <div className="glassRightClose" style={styles.glassSpace}>
+                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '45%' }}>
+                  Me découvrir
+                </div>
+              </div>
+              <div className="glassRightFar" style={styles.glassSpace}>
+                <div className="glassOrb" style={{ ...styles.glassText, marginBottom: '55%' }}>
+                  Me découvrir
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="CormorantSC">
             <div style={styles.container}>
               <div className="title" style={styles.welcome}>
