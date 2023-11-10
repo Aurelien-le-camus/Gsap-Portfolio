@@ -3,7 +3,9 @@ import gsap from 'gsap';
 import '../glass.css';
 
 function GlassOrb(props) {
+  console.log('props: ', props.is2);
   const [isFlipped, setIsFlipped] = useState(false);
+  const is2 = props.is2;
   const [displayText, setDisplayText] = useState(props.basicText);
   const orbTextRef = useRef(null);
 
@@ -30,7 +32,7 @@ function GlassOrb(props) {
   };
 
     return (
-      <div className={`glassOrb ${isFlipped ? 'flipped' : ''}`} style={props.style} onClick={toggleText}>
+      <div className={`glassOrb${is2 ? '2' : ''} ${isFlipped ? 'flipped' : ''}`} style={props.style} onClick={toggleText}>
         <div ref={orbTextRef} className="glassOrbText">
           {displayText}
         </div>
