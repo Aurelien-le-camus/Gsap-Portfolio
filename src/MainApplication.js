@@ -19,7 +19,7 @@ const styles = {
   welcome: {
     fontSize: 150,
     width: '100%',
-    marginTop: '10%',
+    marginTop: '17%',
   },
   container: {
     flexDirection: "column",
@@ -33,10 +33,11 @@ const styles = {
     zIndex: 0,
   },
   glassSpace: {
-    width: '20%',
+    width: '25%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    marginTop: '20%',
   },
   glassText: {
     borderRadius: 100,
@@ -51,12 +52,14 @@ const MainApplication = () => {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
 
-  const firstLayer = "https://drive.google.com/uc?export=view&id=1McVINKlepyjtPjHizWVFkwkX6JWaU9js";
-  const midLayer = "https://drive.google.com/uc?export=view&id=1eWCHMXFHfDlgafwAZk6TGRDVO-ot6DDq";
-  const moonLayer = "https://drive.google.com/uc?export=view&id=1OQ9ROPiPr1TrgbLOGQb0dDlG8lW4Efre";
+  const firstBuilding = "https://drive.google.com/uc?export=view&id=1U08IxfdScMzVIFZm9fas3EgBMZBzpI3P";
+  const midBuilding = "https://drive.google.com/uc?export=view&id=1Wg0S0xn38oHLAPqoIpSQ4z2rZX29XIkQ";
+  const fullFirstLayer = "https://drive.google.com/uc?export=view&id=1T6ed12oWFDeqQKUfjUZ7q_Xml0yRSzcP";
+  const fullSecondLayer = "https://drive.google.com/uc?export=view&id=1ifs9C4vQMkFAYpjsefPELNSGZ1VmM06-"
+  const Moon = "https://drive.google.com/uc?export=view&id=1CM084OqZAjcSmNVM2o20fFT7QYfbJ5KP";
 
   useEffect(() => {
-    if (!firstLayer) {
+    if (!fullFirstLayer || !fullSecondLayer || !firstBuilding || !midBuilding) {
       return;
     }
 
@@ -65,65 +68,87 @@ const MainApplication = () => {
     tl.from(".backgroundLayer", 1, {
       opacity: 0,
       ease: "Power3.out",
-    }, 2.5);
-
-    //Animation for different levels of layer
-    tl.from(".firstLayer", 1, {
-      opacity: 0,
-      y: 100,
-      ease: "Power3.out",
     }, 1);
 
-    tl.from(".midLayer", 1, {
+    tl.fromTo(".fullfirstLayer", {
+      opacity: 1,
+    },
+      {
+        opacity: 0,
+        y: "93.4%",
+        ease: "Power2.out",
+      }, 2);
+
+    tl.fromTo(".fullmidLayer", 1, {
+      opacity: 1
+      },
+      {
+        opacity: 0,
+        y: "200%",
+        ease: "Power2.out",
+      }, 2.3);
+
+    //Animation for different levels of layer
+    tl.fromTo(".firstLayer", {
+      y: "-50%",
       opacity: 0,
-      y: 100,
-      ease: "Power3.out",
-    }, 1.4);
+    },
+      {
+        opacity: 1,
+        y: "30%",
+        ease: "Power2.out",
+      }, 2);
+
+    tl.fromTo(".midLayer", {
+      y: "-50%",
+    },
+      {
+        y: "30%",
+        ease: "Power2.out",
+      }, 2.3);
 
     tl.from(".moonLayer", 1, {
       opacity: 0,
-      y: -100,
+      y: -300,
       ease: "Power3.out",
-    }, 1.8);
+    }, 2.7);
 
     tl.from(".glassLeftFar", 1, {
       opacity: 0,
       x: '-100%',
       ease: "Power3.out",
-    }, 2);
+    }, 3.2);
 
     tl.from(".glassLeftClose", 1, {
       opacity: 0,
       x: '-120%',
       ease: "Power3.out",
-    }, 2.5);
+    }, 3.7);
 
     tl.from(".glassRightFar", 1, {
       opacity: 0,
       x: '100%',
       ease: "Power3.out",
-    }, 2);
+    }, 3.2);
 
     tl.from(".glassRightClose", 1, {
       opacity: 0,
       x: '120%',
       ease: "Power3.out",
-    }, 2.5);
+    }, 3.7);
 
     //Animation for title
     tl.from(".title", 1, {
       opacity: 0,
-      y: -100,
       ease: "Power3.out",
-    }, 3);
+    }, 4);
 
     tl.from(".subTitle", 1, {
       opacity: 0,
-      y: -100,
       ease: "Power3.out",
-    }, 3.5);
+    }, 4.5);
   
-  }, [firstLayer]);
+  }, [fullSecondLayer]);
 
   let scroll = null;
 
@@ -178,44 +203,44 @@ const MainApplication = () => {
       </div>
     );
   }
-  
+
   return (
     <div data-scroll-container style={styles.main}>
       <div className="backgroundLayer">
         {circles}
       </div>
       <div style={{ postion: 'relative' }}>
-        <div className="firstLayer" style={{ backgroundImage: `url(${firstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }}>
-          <div className="Rajdhani">
-            <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute' }}>
-              <div className="glassLeftFar" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"passioné"} />
-              </div>
-              <div className="glassLeftClose" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"déterminé"} />
-              </div>
-              <div style={{ width: '20%' }} />
-              <div className="glassRightClose" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '45%' }} basicText={"Cliquez ici"} newText={"acharné"} />
-              </div>
-              <div className="glassRightFar" style={styles.glassSpace}>
-                <GlassOrb style={{ ...styles.glassText, marginBottom: '55%' }} basicText={"Cliquez ici"} newText={"perfectionniste"} />
-              </div>
+        <div className="firstLayer" style={{ backgroundImage: `url(${firstBuilding})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }} />
+        <div className="fullfirstLayer" style={{ backgroundImage: `url(${fullFirstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }} />
+        <div className="midLayer" style={{ backgroundImage: `url(${midBuilding})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
+        <div className="fullmidLayer" style={{ backgroundImage: `url(${fullSecondLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
+        <div className="moonLayer" style={{ backgroundImage: `url(${Moon})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }} />
+        <div className="Rajdhani">
+          <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute', zIndex: 4 }}>
+            <div className="glassLeftFar" style={styles.glassSpace}>
+              <GlassOrb style={{ ...styles.glassText, marginBottom: '55%', marginLeft: '50%' }} basicText={"Cliquez ici"} newText={"Un passioné"} is2={false} />
             </div>
-          </div>
-          <div className="CormorantSC">
-            <div style={styles.container}>
-              <div className="title" style={styles.welcome}>
-                {currentTitle}
-              </div>
-              <div className="subTitle" style={{ fontSize: 45, opacity: 0.8 }}>
-                Je suis...
-              </div>
+            <div className="glassLeftClose" style={styles.glassSpace}>
+              <GlassOrb style={{ ...styles.glassText, marginLeft: '17%' }} basicText={"Cliquez ici"} newText={"Un déterminé"} is2={true} />
+            </div>
+            <div className="glassRightClose" style={styles.glassSpace}>
+              <GlassOrb style={{ ...styles.glassText, marginRight: '17%' }} basicText={"Cliquez ici"} newText={"Un acharné"} is2={true} />
+            </div>
+            <div className="glassRightFar" style={styles.glassSpace}>
+              <GlassOrb style={{ ...styles.glassText, marginBottom: '55%', marginRight: '50%' }} basicText={"Cliquez ici"} newText={"Un perfectionniste"} is2={false} />
             </div>
           </div>
         </div>
-        <div className="midLayer" style={{ backgroundImage: `url(${midLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
-        <div className="moonLayer" style={{ backgroundImage: `url(${moonLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }} />
+        <div className="CormorantSC">
+          <div style={styles.container}>
+            <div className="title" style={styles.welcome}>
+              {currentTitle}
+            </div>
+            <div className="subTitle" style={{ fontSize: 45, opacity: 0.8 }}>
+              Je suis...
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
