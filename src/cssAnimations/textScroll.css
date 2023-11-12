@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee p {
+  font-family: "Archivo Black", sans-serif;
+  display: inline-block;
+  color: white;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee2 {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee2 20s linear infinite;
+}
+
+.marquee2 p {
+  font-family: "Archivo Black", sans-serif;
+  display: inline-block;
+  color: transparent; /* Couleur du texte transparente */
+  -webkit-text-stroke: 4px white /* Bordure de texte grise de 2px */
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}

@@ -126,9 +126,9 @@ const MainApplication = () => {
 
   }, []);
 
-  let scroll = null;
-
   useEffect(() => {
+    let scroll = null;
+
     scroll = createScroll();
     return () => {
       if (scroll) {

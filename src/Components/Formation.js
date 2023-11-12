@@ -2,8 +2,18 @@ import React, { useEffect } from "react";
 import "../font/font.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { gsap } from "gsap";
 import "../glass.css";
+import "../cssAnimations/textScroll.css";
+import "../particles.css";
+import cLogo from "../images/c.png";
+import cPlusLogo from "../images/cplus.png";
+import pythonLogo from "../images/Python.png";
+import htmlLogo from "../images/html.png";
+import cssLogo from "../images/css.png";
+import JsLogo from "../images/js.png";
+import ReactLogo from "../images/react.png";
+import GsapLogo from "../images/gsap.png";
+import KotlinLogo from "../images/kotlin.png";
 
 const EpitechImage = "https://cibul.s3.amazonaws.com/event_journee-portes-ouvertes-epitech-nancy_448_118323.jpg";
 const WorkingImage = "https://amio-millau.fr/assets/images/formations/FormationCAISI.webp";
@@ -165,11 +175,10 @@ const styles = {
   }
 };
 
-const Formation = () => {
+const cities = "Nancy-Niort-Bordeaux-Rennes-Paris-";
+const capitales = "Dublin-Londres-Rome-Agadir-Marrakech-";
 
-  useEffect(() => {
-    const tl = new gsap.timeline();
-  });
+const Formation = () => {
 
   useEffect(() => {
     AOS.init({
@@ -183,10 +192,23 @@ const Formation = () => {
     setTimeout(() => {
       glass.classList.remove('disabled-hover');
     }, 1100);
-  }, []) 
+  }, [])
+
+  const circles = [];
+
+  for (let i = 0; i < 30; i++) {
+    circles.push(
+      <div key={i} className="circle-container">
+        <div className="circle"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="Rajdhani" style={styles.main}>
+      <div className="backgroundLayer">
+        {circles}
+      </div>
       <div style={{ height: '100vh', marginBottom: '10vh' }}>
         <div style={styles.basicBackground}>
           <div data-aos="fade-up" style={{ marginTop: '30vh', height: '20vh', width: '50%', display: 'flex', justifyContent: 'center', fontSize: 60 }}>
@@ -205,7 +227,11 @@ const Formation = () => {
           </div>
         </div>
         <div style={{ display: 'flex', marginTop: '25vh' }}>
-          <div style={{ width: '50%' }} />
+          <div style={{ width: '50%', display: 'flex', justifyContent: 'center', marginBottom: '3%' }}>
+            <img data-aos="fade-right" data-aos-delay="200" data-aos-offset="0" src={cLogo} alt="Clogo" style={{ height: '130px', width: '130px' }} />
+            <img data-aos="fade-right" data-aos-delay="250" data-aos-offset="0" src={cPlusLogo} alt="CPluslogo" style={{ height: '130px', width: '130px', marginLeft: '5%', marginRight: '5%' }} />
+            <img data-aos="fade-right" data-aos-delay="300" data-aos-offset="0" src={pythonLogo} alt="PytonLogo" style={{ height: '130px', width: '130px' }} />
+          </div>
           <div data-aos="fade-left" style={{ height: '20vh', width: '50%', display: 'flex', justifyContent: 'center', fontSize: 60 }}>
             Ma formation
           </div>
@@ -214,10 +240,18 @@ const Formation = () => {
           <div data-aos="fade-right" style={{ height: '20vh', width: '50%', display: 'flex', justifyContent: 'center', fontSize: 60 }}>
             Mes expériences
           </div>
-          <div style={{ width: '50%' }} />
+          <div style={{ width: '50%', display: 'flex', justifyContent: 'center', marginBottom: '7%' }}>
+            <img data-aos="fade-left" data-aos-duration="1000" src={htmlLogo} alt="htmllogo" style={{ height: '130px', width: '130px' }} />
+            <img data-aos="fade-left" data-aos-duration="1250" src={cssLogo} alt="csslogo" style={{ height: '130px', width: '130px', marginLeft: '5%', marginRight: '5%' }} />
+            <img data-aos="fade-left" data-aos-duration="1500" src={JsLogo} alt="JSLogo" style={{ height: '130px', width: '130px' }} />
+          </div>
         </div>
         <div style={{ display: 'flex' }}>
-          <div style={{ width: '50%' }} />
+        <div style={{ width: '50%', display: 'flex', justifyContent: 'center', marginBottom: '7%' }}>
+            <img data-aos="fade-right" data-aos-duration="1000" src={ReactLogo} alt="htmllogo" style={{ height: '130px', width: '130px' }} />
+            <img data-aos="fade-right" data-aos-duration="1250" src={GsapLogo} alt="csslogo" style={{ height: '130px', width: '130px', marginLeft: '5%', marginRight: '5%' }} />
+            <img data-aos="fade-right" data-aos-duration="1500" src={KotlinLogo} alt="JSLogo" style={{ height: '130px', width: '130px' }} />
+          </div>
           <div data-aos="fade-up" style={{ height: '20vh', width: '50%', fontSize: 60 }}>
             Mes voyages
           </div>
@@ -261,8 +295,26 @@ const Formation = () => {
           <div data-aos="fade-left" className="rightImageSlide2" style={styles.rightImageDiv2} />
         </div>
       </div>
-      <div style={{ marginTop: '25vh', height: '100vh' }}>
-        Div 100vh
+      <div style={{ marginTop: '15vh', fontSize: '100px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '80%', marginTop: '10vh', borderTop: '2px dotted #bbb' }} />
+        </div>
+        <div className="marquee" data-aos="fade-down">
+          <p>
+            {cities}
+          </p>
+          <p>
+            {cities}
+          </p>
+        </div>
+        <div className="marquee2" data-aos="fade-down">
+          <p>
+            {capitales}
+          </p>
+          <p>
+            {capitales}
+          </p>
+        </div>
       </div>
     </div>
   );
