@@ -5,6 +5,9 @@ import createScroll from "./locomotive-scroll-config.js";
 import { gsap } from "gsap";
 import GlassOrb from "./Components/GlassOrb";
 import "./particles.css";
+import entireFirstLayer from "./images/EntireFirstBuilding.png";
+import entireMidLayer from "./images/EntireMidBuilding.png";
+import moonLayer from "./images/Moon.png";
 
 const titles = ["Bienvenue", "Welcome", "Willkommen", "Benvenuto"];
 
@@ -52,17 +55,7 @@ const MainApplication = () => {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(titles[currentTitleIndex]);
 
-  const firstBuilding = "https://drive.google.com/uc?export=view&id=1U08IxfdScMzVIFZm9fas3EgBMZBzpI3P";
-  const midBuilding = "https://drive.google.com/uc?export=view&id=1Wg0S0xn38oHLAPqoIpSQ4z2rZX29XIkQ";
-  const fullFirstLayer = "https://drive.google.com/uc?export=view&id=1T6ed12oWFDeqQKUfjUZ7q_Xml0yRSzcP";
-  const fullSecondLayer = "https://drive.google.com/uc?export=view&id=1ifs9C4vQMkFAYpjsefPELNSGZ1VmM06-"
-  const Moon = "https://drive.google.com/uc?export=view&id=1CM084OqZAjcSmNVM2o20fFT7QYfbJ5KP";
-
   useEffect(() => {
-    if (!fullFirstLayer || !fullSecondLayer || !firstBuilding || !midBuilding) {
-      return;
-    }
-
     const tl = new gsap.timeline();
 
     tl.from(".backgroundLayer", 1, {
@@ -70,72 +63,55 @@ const MainApplication = () => {
       ease: "Power3.out",
     }, 1);
 
-    tl.fromTo(".fullfirstLayer", {
-      opacity: 1,
-    },
-      {
-        opacity: 0,
-        y: "93.4%",
-        ease: "Power2.out",
-      }, 2);
-
-    tl.fromTo(".fullmidLayer", 1, {
-      opacity: 1
-      },
-      {
-        opacity: 0,
-        y: "200%",
-        ease: "Power2.out",
-      }, 2.3);
-
     //Animation for different levels of layer
     tl.fromTo(".firstLayer", {
       y: "-50%",
-      opacity: 0,
     },
       {
-        opacity: 1,
-        y: "30%",
-        ease: "Power2.out",
-      }, 2);
+        y: "20%",
+        ease: "Power1.out",
+        duration: 1.8,
+      }, 1);
 
     tl.fromTo(".midLayer", {
       y: "-50%",
     },
       {
-        y: "30%",
+        y: "20%",
         ease: "Power2.out",
-      }, 2.3);
+        duration: 2,
+      }, 1);
 
     tl.from(".moonLayer", 1, {
-      opacity: 0,
-      y: -300,
+      y: -600,
       ease: "Power3.out",
-    }, 2.7);
+      duration: 1,
+    }, 1.7);
 
     tl.from(".glassLeftFar", 1, {
       opacity: 0,
       x: '-100%',
       ease: "Power3.out",
-    }, 3.2);
+    }, 3);
 
     tl.from(".glassLeftClose", 1, {
       opacity: 0,
       x: '-120%',
       ease: "Power3.out",
-    }, 3.7);
+    }, 3.3);
 
     tl.from(".glassRightFar", 1, {
       opacity: 0,
       x: '100%',
       ease: "Power3.out",
-    }, 3.2);
+    }, 3);
 
-    tl.from(".glassRightClose", 1, {
+    tl.from(".glassRightClose", {
+      duration: 1,
       opacity: 0,
       x: '120%',
       ease: "Power3.out",
-    }, 3.7);
+    }, 3.3);
 
     //Animation for title
     tl.from(".title", 1, {
@@ -147,8 +123,8 @@ const MainApplication = () => {
       opacity: 0,
       ease: "Power3.out",
     }, 4.5);
-  
-  }, [fullSecondLayer]);
+
+  }, []);
 
   let scroll = null;
 
@@ -210,11 +186,9 @@ const MainApplication = () => {
         {circles}
       </div>
       <div style={{ postion: 'relative' }}>
-        <div className="firstLayer" style={{ backgroundImage: `url(${firstBuilding})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }} />
-        <div className="fullfirstLayer" style={{ backgroundImage: `url(${fullFirstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }} />
-        <div className="midLayer" style={{ backgroundImage: `url(${midBuilding})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
-        <div className="fullmidLayer" style={{ backgroundImage: `url(${fullSecondLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
-        <div className="moonLayer" style={{ backgroundImage: `url(${Moon})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }} />
+        <div className="firstLayer" style={{ backgroundImage: `url(${entireFirstLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: '100% auto', backgroundPosition: 'bottom', height: '200vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 3 }} />
+        <div className="midLayer" style={{ backgroundImage: `url(${entireMidLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: '100% auto', backgroundPosition: 'bottom', height: '200vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }} />
+        <div className="moonLayer" style={{ backgroundImage: `url(${moonLayer})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }} />
         <div className="Rajdhani">
           <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'row', position: 'absolute', zIndex: 4 }}>
             <div className="glassLeftFar" style={styles.glassSpace}>
