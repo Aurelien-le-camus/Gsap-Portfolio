@@ -9,6 +9,8 @@ import { Navigate } from "react-router";
 import TopMenu from './Components/SideMenu';
 import MainApplication from './MainApplication';
 import Formation from './Components/Formation';
+import Home from './Components/Home';
+import Experiences from './Components/Experiences';
 
 const Router = () => {
   const routes = {
@@ -18,6 +20,8 @@ const Router = () => {
       // Default route that redirects to home
       {path: '*', element: <Navigate to='/' />},
       {path: '/', element: <MainApplication />},
+      {path: '/home', element: <Home />},
+      {path: '/experiences', element: <Experiences />},
       {path: '/formation', element: <Formation />},
     ],
   };
