@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../cssAnimations/rectangleHover.css";
+import dublinImage from "../images/dublin.jpg";
+import travel from "../images/traveling.png";
+import study from "../images/innovation.png";
+import bartender from "../images/bartender.png";
 
 const styles = {
   main: {
@@ -22,6 +26,28 @@ const styles = {
     marginTop: '100px',
     zIndex: 1,
   },
+  smallCard: {
+    width: '25%',
+    height: '30vh',
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '1%',
+  },
+  contentSmallCard: {
+    fontSize: '20px',
+    color: 'black',
+    fontWeight: 600,
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'end',
+  },
+  picture: {
+    width: '200px',
+  }
 };
 
 const Experiences = () => {
@@ -138,6 +164,35 @@ const Experiences = () => {
           </div>
           <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="600" style={{ width: '20%' }}>
             <div className="rectangleContainer" style={{ background: '#EDAFB8' }} />
+          </div>
+        </div>
+        <div data-aos="fade-up" style={{ width: '80%', height: '100vh', backgroundColor: 'white', marginTop: '10%', marginBottom: '3%', display: 'flex', flexDirection: 'column', padding: '2%' }}>
+          <div data-aos="fade-up" style={{ fontSize: '130px', color: 'black', fontWeight: 700, width: '100%' }}>
+            DUBLIN TRIP
+          </div>
+          <div data-aos="fade-up" style={{ fontSize: '30px', color: 'black', fontWeight: 700, width: '100%' }}>
+            Unforgettable year
+          </div>
+          <div data-aos="fade-up" style={{ height: '80%', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', background: `url(${dublinImage})`, backgroundSize: 'cover', borderRadius: 7 }} />
+        </div>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', marginBottom: '3%' }}>
+          <div data-aos="fade-up" data-aos-delay="100" style={styles.smallCard}>
+            <img src={travel} alt="travel" style={styles.picture} />
+            <div style={styles.contentSmallCard}>
+              {`4th year of Epitech in another country than France (incredible chance)`}
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200" style={styles.smallCard}>
+            <img src={study} alt="study" style={styles.picture} />
+            <div style={styles.contentSmallCard}>
+              {`A successfull year at Technological University of Dublin (double certification)`}
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" style={styles.smallCard}>
+            <img src={bartender} alt="bartender" style={styles.picture} />
+            <div style={styles.contentSmallCard}>
+              A crazy new experience with his package of surprise and new encounters
+            </div>
           </div>
         </div>
       </div>
