@@ -40,13 +40,13 @@ const TopMenu = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/home") {
+    if (location.pathname === "/") {
       setUndelineHome(true);
       setUndelineFormation(false);
       setUndelineProject(false);
       setUndelineContact(false);
     }
-    if (location.pathname === "/formation") {
+    if (location.pathname === "/experiences") {
       setUndelineHome(false);
       setUndelineFormation(true);
       setUndelineProject(false);
@@ -91,7 +91,7 @@ const TopMenu = () => {
           <div style={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
           <button
             className="Rajdhani"
-            onClick={() => navigateTo("/home")}
+            onClick={() => navigateTo("/")}
             style={styles.button}
           >
             Accueil
@@ -99,7 +99,7 @@ const TopMenu = () => {
           </button>
           <button
             className="Rajdhani"
-            onClick={() => navigateTo("/formation")}
+            onClick={() => navigateTo("/experiences")}
             style={styles.button}
           >
             Mes expériences

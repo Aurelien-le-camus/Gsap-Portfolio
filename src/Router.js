@@ -19,9 +19,9 @@ const Router = () => {
     children: [
       // Default route that redirects to home
       {path: '*', element: <Navigate to='/' />},
-      {path: '/', element: <MainApplication />},
-      {path: '/home', element: <Home />},
+      {path: '/', element: <Home />},
       {path: '/experiences', element: <Experiences />},
+      {path: '/test', element: <MainApplication />},
       {path: '/formation', element: <Formation />},
     ],
   };
