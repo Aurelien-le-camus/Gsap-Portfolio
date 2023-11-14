@@ -4,9 +4,9 @@
   background: transparent;
   transition: opacity 0.3 ease;
   cursor: default;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .rectangleContainer:hover {
-  opacity: 1;
+  opacity: 0.5;
 }
