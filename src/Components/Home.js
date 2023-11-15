@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../font/font.css";
+import "../cssAnimations/homeAnimationsHover.css";
 import mountainsBackground from "../images/mountainsBackground.jpg";
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
@@ -41,10 +42,10 @@ const Home = () => {
         <div style={{ width: '5%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
           <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="1250" data-aos-offset="0" style={{ height: '15%', borderLeft: '2px solid', borderBottom: '2px solid', borderRadius: 5 }} />
           <a data-aos="fade-right" data-aos-delay="1400" data-aos-offset="0" href="https://github.com/Aurelien-le-camus" target="_blank" rel="noopener noreferrer">
-            <AiFillGithub style={{ width: '40px', height: '40px', marginTop: '50%', marginBottom: '15%', cursor: 'pointer', color: 'white' }} />
+            <AiFillGithub className="icon" style={{ marginTop: '50%', marginBottom: '15%' }} />
           </a>
           <a data-aos="fade-right" data-aos-delay="1500" data-aos-offset="0" href="https://www.linkedin.com/in/aurelien-le-camus/" target="_blank" rel="noopener noreferrer">
-            <AiFillLinkedin style={{ width: '40px', height: '40px', cursor: 'pointer', color: 'white' }} />
+            <AiFillLinkedin className="icon" />
           </a>
         </div>
         <div style={{ width: '90%' }}>
@@ -55,8 +56,34 @@ const Home = () => {
             <div>
               I Am
             </div>
-            <div style={{ marginLeft: '2%', fontWeight: '900' }}>
-              Developer
+            <div style={{ marginLeft: '2%', fontWeight: '900', display: 'flex', flexDirection: 'row' }}>
+              <div className="letter">
+                D
+              </div>
+              <div className="letter">
+                e
+              </div>
+              <div className="letter">
+                v
+              </div>
+              <div className="letter">
+                e
+              </div>
+              <div className="letter">
+                l
+              </div>
+              <div className="letter">
+                o
+              </div>
+              <div className="letter">
+                p
+              </div>
+              <div className="letter">
+                e
+              </div>
+              <div className="letter">
+                r
+              </div>
             </div>
           </div>
           <div data-aos="fade-up" data-aos-delay="1150" data-aos-offset="0" style={{ width: '100%', fontSize: '30px', display: 'flex', justifyContent: 'center' }}>
