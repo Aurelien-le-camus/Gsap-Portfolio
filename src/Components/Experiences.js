@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../cssAnimations/rectangleHover.css";
+import "../cssAnimations/textScroll.css";
+import "../cssAnimations/buttonAnimation.css";
+import "../cssAnimations/particles.css";
 import dublinImage from "../images/dublin.jpg";
 import travel from "../images/traveling.png";
 import study from "../images/innovation.png";
@@ -24,7 +27,7 @@ const styles = {
     overflow: 'hidden',
     textAlign: 'center',
     marginTop: '100px',
-    zIndex: 1,
+    zIndex: 2,
   },
   smallCard: {
     width: '25%',
@@ -57,6 +60,16 @@ const Experiences = () => {
       duration: 1000,
     });
   }, []);
+
+  const circles = [];
+
+  for (let i = 0; i < 30; i++) {
+    circles.push(
+      <div key={i} className="circle-container">
+        <div className="circle"></div>
+      </div>
+    );
+  }
 
   return (
     <div style={styles.main}>
@@ -175,7 +188,7 @@ const Experiences = () => {
           </div>
           <div data-aos="fade-up" style={{ height: '80%', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', background: `url(${dublinImage})`, backgroundSize: 'cover', borderRadius: 7 }} />
         </div>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', marginBottom: '3%' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', marginBottom: '7%' }}>
           <div data-aos="fade-up" data-aos-delay="100" style={styles.smallCard}>
             <img src={travel} alt="travel" style={styles.picture} />
             <div style={styles.contentSmallCard}>
@@ -193,6 +206,38 @@ const Experiences = () => {
             <div style={styles.contentSmallCard}>
               A crazy new experience with his package of surprise and new encounters
             </div>
+          </div>
+        </div>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+        <div style={{ zIndex: -1 }}>
+          {circles}
+        </div>
+          <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+            <div data-aos="fade-right" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: 'white' }}>
+              WE
+            </div>
+            <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 200, color: 'white', marginTop: '5%', marginLeft: '2%' }}>
+              ARE
+            </div>
+          </div>
+          <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+            <div data-aos="fade-right" className="textBorder" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: '#242424' }}>
+              THE
+            </div>
+            <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 800, color: 'white', marginTop: '6%', marginLeft: '2%' }}>
+              FUTURE
+            </div>
+          </div>
+          <div data-aos="fade-up" style={{ width: '100%', marginTop: '5%', fontSize: '70px', fontWeight: 600 }}>
+            LET'S WORK
+          </div>
+          <div data-aos="fade-up" style={{ width: '100%', marginBottom: '3%', fontSize: '100px', fontWeight: 800 }}>
+            TOGETHER !
+          </div>
+          <div style={{ width: '100%', marginBottom: '5%', display: 'flex', justifyContent: 'center' }}>
+            <button className="contactButton">
+              Contact me
+            </button>
           </div>
         </div>
       </div>

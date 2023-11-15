@@ -7,8 +7,6 @@ import {
 } from 'react-router-dom';
 import { Navigate } from "react-router";
 import TopMenu from './Components/SideMenu';
-import MainApplication from './MainApplication';
-import Formation from './Components/Formation';
 import Home from './Components/Home';
 import Experiences from './Components/Experiences';
 
@@ -21,8 +19,6 @@ const Router = () => {
       {path: '*', element: <Navigate to='/' />},
       {path: '/', element: <Home />},
       {path: '/experiences', element: <Experiences />},
-      {path: '/test', element: <MainApplication />},
-      {path: '/formation', element: <Formation />},
     ],
   };
 

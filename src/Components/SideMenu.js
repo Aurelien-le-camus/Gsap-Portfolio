@@ -15,7 +15,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 5,
+    zIndex: 2,
   },
   button: {
     backgroundColor: "transparent",

@@ -22,7 +22,7 @@ const styles = {
     color: "white",
     overflowX: 'hidden',
     textAlign: 'center',
-    zIndex: 1,
+    zIndex: 3,
   },
 };
 
