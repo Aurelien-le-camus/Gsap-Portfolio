@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from "react-router";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../cssAnimations/rectangleHover.css";
@@ -54,6 +55,8 @@ const styles = {
 };
 
 const Experiences = () => {
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({
@@ -235,7 +238,7 @@ const Experiences = () => {
             TOGETHER !
           </div>
           <div style={{ width: '100%', marginBottom: '5%', display: 'flex', justifyContent: 'center' }}>
-            <button className="contactButton">
+            <button className="contactButton" onClick={() => navigate("/contact")}>
               Contact me
             </button>
           </div>

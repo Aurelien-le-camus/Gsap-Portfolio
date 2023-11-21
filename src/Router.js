@@ -9,6 +9,8 @@ import { Navigate } from "react-router";
 import TopMenu from './Components/SideMenu';
 import Home from './Components/Home';
 import Experiences from './Components/Experiences';
+import Projects from './Components/Projects';
+import Contact from './Components/Contact';
 
 const Router = () => {
   const routes = {
@@ -19,6 +21,8 @@ const Router = () => {
       {path: '*', element: <Navigate to='/' />},
       {path: '/', element: <Home />},
       {path: '/experiences', element: <Experiences />},
+      {path: '/projects', element: <Projects />},
+      {path: '/contact', element: <Contact />},
     ],
   };
 

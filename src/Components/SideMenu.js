@@ -115,7 +115,7 @@ const TopMenu = () => {
           </button>
           <button
             className="Rajdhani"
-            onClick={() => navigateTo("/")}
+            onClick={() => navigateTo("/contact")}
             style={styles.button}
           >
             Me contacter
