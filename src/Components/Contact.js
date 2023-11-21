@@ -53,13 +53,10 @@ const Contact = () => {
               ensemble
             </div>
             <div style={{ marginRight: '10px' }}>
-              la solution de
-            </div>
-            <div style={{ marginRight: '10px' }}>
-              vos
+              la solution qui répond à vos
             </div>
             <div style={{ fontWeight: 700 }}>
-              rêves
+              besoins
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
