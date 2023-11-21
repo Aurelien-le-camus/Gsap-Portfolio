@@ -10,12 +10,12 @@ const styles = {
     top: 0,
     height: "75px",
     width: "100%",
-    background: "transparent",
+    background: "#242424",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 2,
+    zIndex: 5,
   },
   button: {
     backgroundColor: "transparent",
@@ -82,19 +82,19 @@ const TopMenu = () => {
 
   return (
     <div>
-      <div className="top-menu" style={styles.topMenu}>
+      <div className="top-menu" style={{ ...styles.topMenu, background: underlineHome ? 'transparent' : '#1e1e28' }}>
         <div style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
-          <div style={{ width: '25%', display: 'flex', justifyContent: 'center', fontSize: '30px', fontWeight: '800', color: 'white', cursor: 'default' }}>
-            Walca
+          <div style={{ width: '35%', display: 'flex', justifyContent: 'center', fontSize: '25px', fontWeight: '800', color: 'white', cursor: 'default' }}>
+            Aurélien LE CAMUS | Walca
           </div>
-          <div style={{ width: '25%' }} />
+          <div style={{ width: '15%' }} />
           <div style={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
           <button
             className="Rajdhani"
             onClick={() => navigateTo("/")}
             style={styles.button}
           >
-            Accueil
+            Home
             {underlineHome && <div style={{ width: '100%', borderTop: '1px solid', borderBottom: '1px solid', borderRadius: 5 }} />}
           </button>
           <button
@@ -102,7 +102,7 @@ const TopMenu = () => {
             onClick={() => navigateTo("/experiences")}
             style={styles.button}
           >
-            Mes expériences
+            My experiences
             {underlineFormation && <div style={{ width: '100%', borderTop: '1px solid', borderBottom: '1px solid', borderRadius: 5 }} />}
           </button>
           <button
@@ -110,7 +110,7 @@ const TopMenu = () => {
             onClick={() => navigateTo("/projects")}
             style={styles.button}
           >
-            Mes projets
+            My projects
             {underlineProject && <div style={{ width: '100%', borderTop: '1px solid', borderBottom: '1px solid', borderRadius: 5 }} />}
           </button>
           <button
@@ -118,7 +118,7 @@ const TopMenu = () => {
             onClick={() => navigateTo("/contact")}
             style={styles.button}
           >
-            Me contacter
+            Contact me
             {underlineContact && <div style={{ width: '100%', borderTop: '1px solid', borderBottom: '1px solid', borderRadius: 5 }} />}
           </button>
           </div>

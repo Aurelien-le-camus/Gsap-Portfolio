@@ -68,10 +68,10 @@ const Contact = () => {
             </div>
             <div style={styles.halfPart}>
               <form>
-                <input data-aos="fade-up" data-aos-delay="300" name="name" type="text" class="feedback-input" placeholder="Nom" />
-                <input data-aos="fade-up" data-aos-delay="350" name="email" type="text" class="feedback-input" placeholder="Email" />
-                <input data-aos="fade-up" data-aos-delay="400" name="subject" type="text" class="feedback-input" placeholder="Sujet" />
-                <textarea data-aos="fade-up" data-aos-delay="450" name="text" class="feedback-input" placeholder="Votre message" />
+                <input data-aos="fade-up" data-aos-delay="300" name="name" type="text" className="feedback-input" placeholder="Nom" />
+                <input data-aos="fade-up" data-aos-delay="350" name="email" type="text" className="feedback-input" placeholder="Email" />
+                <input data-aos="fade-up" data-aos-delay="400" name="subject" type="text" className="feedback-input" placeholder="Sujet" />
+                <textarea data-aos="fade-up" data-aos-delay="450" name="text" className="feedback-input" placeholder="Votre message" />
                 <input className="button-send" data-aos="fade-up" data-aos-delay="500" type="submit" value="Envoyer" />
               </form>
             </div>

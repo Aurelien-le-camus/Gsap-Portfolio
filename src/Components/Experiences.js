@@ -10,6 +10,11 @@ import dublinImage from "../images/dublin.jpg";
 import travel from "../images/traveling.png";
 import study from "../images/innovation.png";
 import bartender from "../images/bartender.png";
+import bases from "../images/bases.png";
+import progress from "../images/progress.png";
+import web from "../images/web.png";
+import foreign from "../images/travel.png";
+import company from "../images/company.png"
 
 const styles = {
   main: {
@@ -51,6 +56,26 @@ const styles = {
   },
   picture: {
     width: '200px',
+  },
+  section: {
+    width: '100%',
+    position: 'absolute',
+    borderRadius: 50,
+    border: '3px solid white',
+    fontSize: '20px',
+    paddingTop: '7%',
+    paddingBottom: '7%',
+    paddingLeft: '5%',
+    paddingRight: '5%',
+    fontWeight: 500,
+  },
+  sectionImage: {
+    width: '100%',
+    position: 'absolute',
+    paddingTop: '7%',
+    paddingBottom: '7%',
+    paddingLeft: '5%',
+    paddingRight: '5%',
   }
 };
 
@@ -73,6 +98,23 @@ const Experiences = () => {
       </div>
     );
   }
+
+
+  let svg = null;
+
+  useEffect(() => {
+    svg = document.getElementById("svgPath");
+    const length = svg.getTotalLength();
+
+    svg.style.strokeDasharray = length;
+    svg.style.strokeDashoffset = length;
+
+    window.addEventListener("scroll", function () {
+      const scrollpercent = (document.body.scrollTop + document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+      const draw = length * scrollpercent * 1.5;
+      svg.style.strokeDashoffset = length - draw;
+    });
+  }, [svg]);
 
   return (
     <div style={styles.main}>
@@ -182,7 +224,128 @@ const Experiences = () => {
             <div className="rectangleContainer" style={{ background: '#EDAFB8' }} />
           </div>
         </div>
-        <div data-aos="fade-up" style={{ width: '80%', height: '100vh', backgroundColor: 'white', marginTop: '10%', marginBottom: '3%', display: 'flex', flexDirection: 'column', padding: '2%' }}>
+        <div data-aos="fade-up" style={{ marginTop: '3%', display: 'flex', justifyContent: 'center', width: '100%', fontSize: '100px', fontWeight: 800 }}>
+          EPITECH NANCY
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ position: 'relative', width: '30%' }}>
+            <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '15%' }}>
+              <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
+                1st Year | Fundamentals
+              </div>
+              <div>
+                Learning basic development in C
+              </div>
+              <div>
+                Basic algorithms and code logic
+              </div>
+              <div>
+                {`Discovering Linux (fedora) and git systems`}
+              </div>
+              <div>
+                Understanding project-based and active pedagogy
+              </div>
+            </div>
+            <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '27%' }}>
+              <img alt="progress" src={progress} style={{ width: '400px', height: '400px' }}/>
+            </div>
+            <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '50%' }}>
+              <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
+                3rd Year | Exploring
+              </div>
+              <div>
+                Selection of specialities for 4th and 5th years
+              </div>
+              <div>
+                {`Discovering Web and Mobile development (JavaScript, Kotlin, React)`}
+              </div>
+              <div>
+                {`Massive professional experiences (Epitech Nancy and English World)`}
+              </div>
+            </div>
+            <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '67%' }}>
+              <img alt="foreign" src={foreign} style={{ width: '400px', height: '400px' }}/>
+            </div>
+            <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '90%' }}>
+              <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
+                5th Year | Specialising
+              </div>
+              <div>
+                Mastering Js, Ts, React, React-Native
+              </div>
+              <div>
+                Developping soft skills throught modules at Paris
+              </div>
+              <div>
+                {`Finalizing end of studies project (EIP)`}
+              </div>
+              <div>
+                {`Working in companies during entire year (Epitech Nancy, Agoraa ?)`}
+              </div>
+            </div>
+          </div>
+          <div style={{ width: '30%' }}>
+            <svg width="357" height="3000">
+              <path id="svgPath" stroke="#fff" strokeWidth="5px" fill="none" d="M268,106C293.6990093311958,156.98197064989517,319.39801866239156,207.96394129979035,282,250C244.6019813376084,292.03605870020965,144.10693468162947,325.1262054507337,89,388C33.89306531837054,450.8737945492663,24.174242611090563,543.5312368972745,18,666C11.82575738890944,788.4687631027255,9.196094874008299,940.7488469601676,13,1056C16.8039051259917,1171.2511530398324,27.04137789287624,1249.4733752620546,71,1351C114.95862210712376,1452.5266247379454,192.6383935544868,1577.3576519916141,242,1659C291.3616064455132,1740.6423480083859,312.40504788917667,1779.0960167714886,268,1879C223.59495211082336,1978.9039832285114,113.74141488880667,2140.258280922432,88,2337C62.25858511119333,2533.741719077568,120.62929255559666,2765.8708595387843,179,2998" />
+            </svg>
+          </div>
+          <div style={{ position: 'relative', width: '30%' }}>
+            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '12%' }}>
+              <img alt="bases" src={bases} style={{ width: '400px', height: '400px' }}/>
+            </div>
+            <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '30%' }}>
+              <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
+                2nd Year | Deepening
+              </div>
+              <div>
+                Learning object-oriented-programming in C++
+              </div>
+              <div>
+                Lot of teamwork and organization with many tools
+              </div>
+              <div>
+                {`First professional experience in company (Axians Nancy)`}
+              </div>
+            </div>
+            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '47%' }}>
+              <img alt="web" src={web} style={{ width: '400px', height: '400px' }}/>
+            </div>
+            <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '70%' }}>
+              <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
+                4th Year | International
+              </div>
+              <div>
+                Working on Data Science course of TU Dublin
+              </div>
+              <div>
+                Exploring brand new languages like R, PySpark
+              </div>
+              <div>
+                {`Mastering Data management (NoSQL, MongoDB)`}
+              </div>
+            </div>
+            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '87%' }}>
+              <img alt="company" src={company} style={{ width: '400px', height: '400px' }}/>
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: '7%', width: '100%', display: 'flex', flexDirection: 'row' }}>
+          <div data-aos="fade-right" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: 'white' }}>
+            WE
+          </div>
+          <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 200, color: 'white', marginTop: '5%', marginLeft: '2%' }}>
+            ARE
+          </div>
+        </div>
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+          <div data-aos="fade-right" className="textBorder" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: '#242424' }}>
+            THE
+          </div>
+          <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 800, color: 'white', marginTop: '6%', marginLeft: '2%' }}>
+            FUTURE
+          </div>
+        </div>
+        <div data-aos="fade-up" style={{ width: '80%', height: '100vh', backgroundColor: 'white', marginTop: '5%', marginBottom: '3%', display: 'flex', flexDirection: 'column', padding: '2%' }}>
           <div data-aos="fade-up" style={{ fontSize: '130px', color: 'black', fontWeight: 700, width: '100%' }}>
             DUBLIN TRIP
           </div>
@@ -212,32 +375,13 @@ const Experiences = () => {
           </div>
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-        <div style={{ zIndex: -1 }}>
-          {circles}
-        </div>
-          <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
-            <div data-aos="fade-right" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: 'white' }}>
-              WE
-            </div>
-            <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 200, color: 'white', marginTop: '5%', marginLeft: '2%' }}>
-              ARE
-            </div>
-          </div>
-          <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
-            <div data-aos="fade-right" className="textBorder" style={{ width: '50%', display: 'flex', justifyContent: 'flex-end', fontSize: '100px', fontWeight: 600, color: '#242424' }}>
-              THE
-            </div>
-            <div data-aos="fade-left" style={{ width: '50%', display: 'flex', justifyContent: 'flex-start', fontSize: '100px', fontWeight: 800, color: 'white', marginTop: '6%', marginLeft: '2%' }}>
-              FUTURE
-            </div>
-          </div>
-          <div data-aos="fade-up" style={{ width: '100%', marginTop: '5%', fontSize: '70px', fontWeight: 600 }}>
+          <div data-aos="fade-up" style={{ width: '100%', marginTop: '2%', fontSize: '70px', fontWeight: 600 }}>
             LET'S WORK
           </div>
-          <div data-aos="fade-up" style={{ width: '100%', marginBottom: '3%', fontSize: '100px', fontWeight: 800 }}>
+          <div data-aos="fade-up" style={{ width: '100%', marginBottom: '5%', fontSize: '100px', fontWeight: 800 }}>
             TOGETHER !
           </div>
-          <div style={{ width: '100%', marginBottom: '5%', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '100%', marginBottom: '3%', display: 'flex', justifyContent: 'center' }}>
             <button className="contactButton" onClick={() => navigate("/contact")}>
               Contact me
             </button>
