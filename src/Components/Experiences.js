@@ -14,7 +14,26 @@ import bases from "../images/bases.png";
 import progress from "../images/progress.png";
 import web from "../images/web.png";
 import foreign from "../images/travel.png";
-import company from "../images/company.png"
+import company from "../images/company.png";
+import Clogo from "../images/c.png";
+import Linuxlogo from "../images/linux.png";
+import Pythonlogo from "../images/Python.png";
+import Bashlogo from "../images/bash.png";
+import Githublogo from "../images/github.png";
+import CPPlogo from "../images/cplus.png";
+import ASMlogo from "../images/asm.png";
+import JSlogo from "../images/js.png";
+import TSlogo from "../images/ts.png";
+import Reactlogo from "../images/react.png";
+import HTMLlogo from "../images/html.png";
+import CSSlogo from "../images/css.png";
+import Kotlinlogo from "../images/kotlin.png";
+import NOSQLlogo from "../images/nosql.png";
+import Mongologo from "../images/mongo.png";
+import Rlogo from "../images/R.png";
+import ReactNativelogo from "../images/ReactNative.png";
+import Cominglogo from "../images/coming.png";
+import Language from './Language';
 
 const styles = {
   main: {
@@ -233,54 +252,121 @@ const Experiences = () => {
               <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
                 1st Year | Fundamentals
               </div>
-              <div>
-                Learning basic development in C
+              <div style={{ textAlign: 'start' }}>
+                <div>
+                  - Learning basic development in C
+                </div>
+                <div>
+                  - Basic algorithms and code logic
+                </div>
+                <div>
+                  {`- Discovering Linux (fedora) and git systems`}
+                </div>
+                <div>
+                  - Understanding project-based and active pedagogy
+                </div>
               </div>
-              <div>
-                Basic algorithms and code logic
-              </div>
-              <div>
-                {`Discovering Linux (fedora) and git systems`}
-              </div>
-              <div>
-                Understanding project-based and active pedagogy
+              <div style={{ display: 'flex', marginTop: '5%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={Linuxlogo} language={"Linux"} color={"#f3bc02"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={Clogo} language={"C"} color={"#6297d2"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={Pythonlogo} language={"Python"} color={"#3980bb"} />
+                </div>
+                <div>
+                  <Language logo={Bashlogo} language={"Bash"} color={"#fefefe"} />
+                </div>
               </div>
             </div>
             <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '27%' }}>
-              <img alt="progress" src={progress} style={{ width: '400px', height: '400px' }}/>
+              <img alt="progress" src={progress} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '50%' }}>
               <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
                 3rd Year | Exploring
               </div>
-              <div>
-                Selection of specialities for 4th and 5th years
+              <div style={{ textAlign: 'start' }}>
+                <div>
+                  - Selection of specialities for 4th and 5th years
+                </div>
+                <div>
+                  {`- Discovering Web and Mobile development (JavaScript, Kotlin, React)`}
+                </div>
+                <div>
+                  {`- Massive professional experiences (Epitech Nancy and English World)`}
+                </div>
               </div>
-              <div>
-                {`Discovering Web and Mobile development (JavaScript, Kotlin, React)`}
+              <div style={{ display: 'flex', marginTop: '5%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={HTMLlogo} language={"HTML"} color={"#e85328"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={CSSlogo} language={"Css"} color={"#254de5"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={JSlogo} language={"JS"} color={"#d5ba32"} />
+                </div>
+                <div>
+                  <Language logo={Reactlogo} language={"React"} color={"#23a5bd"} />
+                </div>
               </div>
-              <div>
-                {`Massive professional experiences (Epitech Nancy and English World)`}
+              <div style={{ display: 'flex', marginTop: '2%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={CPPlogo} language={"C++"} color={"#c3c3c3"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={Kotlinlogo} language={"Kotlin"} color={"#d76878"} />
+                </div>
+                <div>
+                  <Language logo={TSlogo} language={"TS"} color={"#6fa2d7"} />
+                </div>
               </div>
             </div>
             <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '67%' }}>
-              <img alt="foreign" src={foreign} style={{ width: '400px', height: '400px' }}/>
+              <img alt="foreign" src={foreign} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '90%' }}>
               <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
                 5th Year | Specialising
               </div>
-              <div>
-                Mastering Js, Ts, React, React-Native
+              <div style={{ textAlign: 'start' }}>
+                <div>
+                  - Mastering Js, Ts, React, React-Native
+                </div>
+                <div>
+                  - Developping soft skills throught modules at Paris
+                </div>
+                <div>
+                  {`- Finalizing end of studies project (EIP)`}
+                </div>
+                <div>
+                  {`- Working in companies during entire year (Epitech Nancy, Agoraa ?)`}
+                </div>
               </div>
-              <div>
-                Developping soft skills throught modules at Paris
+              <div style={{ display: 'flex', marginTop: '5%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={HTMLlogo} language={"HTML"} color={"#e85328"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={CSSlogo} language={"Css"} color={"#254de5"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={TSlogo} language={"TS"} color={"#6fa2d7"} />
+                </div>
+                <div>
+                  <Language logo={Reactlogo} language={"React"} color={"#23a5bd"} />
+                </div>
               </div>
-              <div>
-                {`Finalizing end of studies project (EIP)`}
-              </div>
-              <div>
-                {`Working in companies during entire year (Epitech Nancy, Agoraa ?)`}
+              <div style={{ display: 'flex', marginTop: '2%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={ReactNativelogo} language={"React-Native"} color={"#bfd9e4"} />
+                </div>
+                <div style={{ marginLeft: '2%' }}>
+                  <Language logo={Cominglogo} language={"Coming soon"} color={"#f01a6e"} />
+                </div>
               </div>
             </div>
           </div>
@@ -291,41 +377,90 @@ const Experiences = () => {
           </div>
           <div style={{ position: 'relative', width: '30%' }}>
             <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '12%' }}>
-              <img alt="bases" src={bases} style={{ width: '400px', height: '400px' }}/>
+              <img alt="bases" src={bases} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '30%' }}>
               <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
                 2nd Year | Deepening
               </div>
-              <div>
-                Learning object-oriented-programming in C++
+              <div style={{ textAlign: 'start' }}>
+                <div>
+                  - Learning object-oriented-programming in C++
+                </div>
+                <div>
+                  - Lot of teamwork and organization with many tools
+                </div>
+                <div>
+                  {`- First professional experience in company (Axians Nancy)`}
+                </div>
               </div>
-              <div>
-                Lot of teamwork and organization with many tools
-              </div>
-              <div>
-                {`First professional experience in company (Axians Nancy)`}
+              <div style={{ display: 'flex', marginTop: '5%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={Githublogo} language={"Github"} color={"#8d8d8d"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={Clogo} language={"C"} color={"#6297d2"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={CPPlogo} language={"C++"} color={"#c3c3c3"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={Pythonlogo} language={"Python"} color={"#3980bb"} />
+                </div>
+                <div>
+                  <Language logo={ASMlogo} language={"ASM"} color={"#20314b"} />
+                </div>
               </div>
             </div>
             <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '47%' }}>
-              <img alt="web" src={web} style={{ width: '400px', height: '400px' }}/>
+              <img alt="web" src={web} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '70%' }}>
               <div style={{ fontSize: '40px', fontWeight: 700, marginBottom: '10%' }}>
                 4th Year | International
               </div>
-              <div>
-                Working on Data Science course of TU Dublin
+              <div style={{ textAlign: 'start' }}>
+                <div>
+                  - Working on Data Science course of TU Dublin
+                </div>
+                <div>
+                  - Exploring brand new languages like R, PySpark
+                </div>
+                <div>
+                  {`- Mastering Data management (NoSQL, MongoDB)`}
+                </div>
               </div>
-              <div>
-                Exploring brand new languages like R, PySpark
+              <div style={{ display: 'flex', marginTop: '5%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={HTMLlogo} language={"HTML"} color={"#e85328"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={CSSlogo} language={"Css"} color={"#254de5"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={TSlogo} language={"TS"} color={"#6fa2d7"} />
+                </div>
+                <div>
+                  <Language logo={Reactlogo} language={"React"} color={"#23a5bd"} />
+                </div>
               </div>
-              <div>
-                {`Mastering Data management (NoSQL, MongoDB)`}
+              <div style={{ display: 'flex', marginTop: '2%', justifyContent: 'flex-start', fontSize: '16px' }}>
+                <div>
+                  <Language logo={Rlogo} language={"R"} color={"#1a65b8"} />
+                </div>
+                <div style={{ marginLeft: '2%', marginRight: '2%' }}>
+                  <Language logo={NOSQLlogo} language={"NoSQL"} color={"#1a4b71"} />
+                </div>
+                <div style={{ marginRight: '2%' }}>
+                  <Language logo={Mongologo} language={"Mongo"} color={"#419833"} />
+                </div>
+                <div>
+                  <Language logo={ReactNativelogo} language={"React-Native"} color={"#bfd9e4"} />
+                </div>
               </div>
             </div>
             <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '87%' }}>
-              <img alt="company" src={company} style={{ width: '400px', height: '400px' }}/>
+              <img alt="company" src={company} style={{ width: '450px', height: '400px' }} />
             </div>
           </div>
         </div>
