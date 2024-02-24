@@ -20,7 +20,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: 'softwayback/portfolio'
+          images: 'aurelien54/portfolio'
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -37,10 +37,10 @@ jobs:
       - name: Deploy on prod
         uses: floms/action-caprover@v1
         with:
-          host: 'https://caprover.galaxian.dev'
-          password: '*'
+          host: 'https://caprover.walca.dev'
+          password: 'doublebite'
           app: 'preprod-portfolio'
-          image: 'softwayback/portfolio'
+          image: 'aurelien54/portfolio'
           
   CapRover_Deploy_Production:
     if: "!github.event.release.prerelease"
@@ -50,7 +50,7 @@ jobs:
       - name: Deploy on prod
         uses: floms/action-caprover@v1
         with:
-          host: 'https://caprover.galaxian.dev'
-          password: '*'
+          host: 'https://caprover.walca.dev'
+          password: 'doublebite'
           app: 'portfolio'
-          image: 'softwayback/portfolio'
+          image: 'aurelien54/portfolio'
