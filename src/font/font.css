@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Rajdhani;
+    src: url(./Rajdhani-Light.ttf);
+}
+.Rajdhani {
+    font-family: Rajdhani;
+}
+
+@font-face {
+    font-family: Merriweather;
+    src: url(./Merriweather-Light.ttf);
+}
+.Merriweather {
+    font-family: Merriweather;
+}
+
+@font-face {
+    font-family: CormorantSC;
+    src: url(./CormorantSC-Light.ttf);
+}
+.CormorantSC {
+    font-family: CormorantSC-Light;
+}
