@@ -79,8 +79,8 @@ const styles = {
   section: {
     width: '100%',
     position: 'absolute',
-    borderRadius: 50,
-    border: '3px solid white',
+    borderRadius: 30,
+    backgroundColor: '#34343c',
     fontSize: '20px',
     paddingTop: '7%',
     paddingBottom: '7%',
@@ -281,7 +281,7 @@ const Experiences = () => {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '27%' }}>
+            <div style={{ ...styles.sectionImage, top: '27%' }}>
               <img alt="progress" src={progress} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '50%' }}>
@@ -325,7 +325,7 @@ const Experiences = () => {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-right" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '67%' }}>
+            <div style={{ ...styles.sectionImage, top: '67%' }}>
               <img alt="foreign" src={foreign} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '90%' }}>
@@ -376,7 +376,7 @@ const Experiences = () => {
             </svg>
           </div>
           <div style={{ position: 'relative', width: '30%' }}>
-            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '12%' }}>
+            <div style={{ ...styles.sectionImage, top: '12%' }}>
               <img alt="bases" src={bases} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '30%' }}>
@@ -412,7 +412,7 @@ const Experiences = () => {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '47%' }}>
+            <div style={{ ...styles.sectionImage, top: '47%' }}>
               <img alt="web" src={web} style={{ width: '450px', height: '400px' }} />
             </div>
             <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ ...styles.section, top: '70%' }}>
@@ -459,7 +459,7 @@ const Experiences = () => {
                 </div>
               </div>
             </div>
-            <div data-aos="fade-left" data-aos-ease="ease" style={{ ...styles.sectionImage, top: '87%' }}>
+            <div style={{ ...styles.sectionImage, top: '87%' }}>
               <img alt="company" src={company} style={{ width: '450px', height: '400px' }} />
             </div>
           </div>
@@ -481,13 +481,13 @@ const Experiences = () => {
           </div>
         </div>
         <div data-aos="fade-up" style={{ width: '80%', height: '100vh', backgroundColor: 'white', marginTop: '5%', marginBottom: '3%', display: 'flex', flexDirection: 'column', padding: '2%' }}>
-          <div data-aos="fade-up" style={{ fontSize: '130px', color: 'black', fontWeight: 700, width: '100%' }}>
+          <div style={{ fontSize: '130px', color: 'black', fontWeight: 700, width: '100%' }}>
             DUBLIN TRIP
           </div>
-          <div data-aos="fade-up" style={{ fontSize: '30px', color: 'black', fontWeight: 700, width: '100%' }}>
+          <div style={{ fontSize: '30px', color: 'black', fontWeight: 700, width: '100%' }}>
             Unforgettable year
           </div>
-          <div data-aos="fade-up" style={{ height: '80%', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', background: `url(${dublinImage})`, backgroundSize: 'cover', borderRadius: 7 }} />
+          <div style={{ height: '80%', marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', background: `url(${dublinImage})`, backgroundSize: 'cover', borderRadius: 7 }} />
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', marginBottom: '7%' }}>
           <div data-aos="fade-up" data-aos-delay="100" style={styles.smallCard}>
@@ -510,10 +510,10 @@ const Experiences = () => {
           </div>
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-          <div data-aos="fade-up" style={{ width: '100%', marginTop: '2%', fontSize: '70px', fontWeight: 600 }}>
+          <div data-aos="fade-zoom-in" style={{ width: '100%', marginTop: '2%', fontSize: '70px', fontWeight: 600 }}>
             LET'S WORK
           </div>
-          <div data-aos="fade-up" style={{ width: '100%', marginBottom: '5%', fontSize: '100px', fontWeight: 800 }}>
+          <div data-aos="fade-zoom-in" style={{ width: '100%', marginBottom: '5%', fontSize: '100px', fontWeight: 800 }}>
             TOGETHER !
           </div>
           <div style={{ width: '100%', marginBottom: '3%', display: 'flex', justifyContent: 'center' }}>

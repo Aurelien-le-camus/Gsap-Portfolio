@@ -25,10 +25,15 @@ const styles = {
   },
   halfPart: {
     width: "50%",
-    height: '100%',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  halfContact: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    padding: '2%',
   }
 };
 
@@ -45,7 +50,7 @@ const Contact = () => {
       <div style={styles.container}>
         <div style={{ width: '5%' }} />
         <div data-aos="fade-zoom-in" data-aos-ease="ease" style={{ width: '90%', backgroundColor: '#232C33', display: 'flex', flexDirection: 'column', padding: '1%', borderRadius: 5 }}>
-          <div data-aos="fade-up" data-aos-delay="150" style={{ fontSize: '40px', fontWeight: 500, display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
+          <div data-aos="fade-zoom-in" data-aos-ease="ease" data-aos-delay="150" style={{ fontSize: '40px', fontWeight: 500, display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
             <div>
               Développons
             </div>
@@ -61,16 +66,26 @@ const Contact = () => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={styles.halfPart}>
-              <img data-aos="fade-right" data-aos-delay="200" src={contact} alt="contact" />
+              <img data-aos="fade-zoom-in" data-aos-ease="ease" data-aos-delay="300" src={contact} alt="contact" />
             </div>
             <div style={styles.halfPart}>
-              <form>
-                <input data-aos="fade-up" data-aos-delay="300" name="name" type="text" className="feedback-input" placeholder="Nom" />
-                <input data-aos="fade-up" data-aos-delay="350" name="email" type="text" className="feedback-input" placeholder="Email" />
-                <input data-aos="fade-up" data-aos-delay="400" name="subject" type="text" className="feedback-input" placeholder="Sujet" />
-                <textarea data-aos="fade-up" data-aos-delay="450" name="text" className="feedback-input" placeholder="Votre message" />
-                <input className="button-send" data-aos="fade-up" data-aos-delay="500" type="submit" value="Envoyer" />
-              </form>
+              <div data-aos="fade-zoom-in" data-aos-ease="ease" data-aos-delay="400" style={styles.halfContact}>
+                <div style={{ fontWeight: 700, fontSize: '60px' }}>
+                  AURELIEN LE CAMUS
+                </div>
+                <div style={{ fontWeight: 500, fontSize: '40px' }}>
+                  WEBSITE | MOBILE APPLICATION
+                </div>
+                <div style={{ fontWeight: 200, fontSize: '25px', marginTop: '8%', fontStyle: 'italic' }}>
+                  aurelien.le-camus@epitech.eu
+                </div>
+                <div style={{ fontWeight: 200, fontSize: '25px', marginTop: '2%', marginBottom: '2%', fontStyle: 'italic' }}>
+                  aurelien.lecamus.walca@gmail.com
+                </div>
+                <div style={{ fontWeight: 200, fontSize: '25px', fontStyle: 'italic' }}>
+                  06 51 88 54 85
+                </div>
+              </div>
             </div>
           </div>
         </div>

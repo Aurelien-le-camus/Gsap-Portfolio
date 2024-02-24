@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../font/font.css";
 import "../cssAnimations/homeAnimationsHover.css";
+import "../cssAnimations/buttonAnimation.css";
 import mountainsBackground from "../images/mountainsBackground.jpg";
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { FaArrowRight } from "react-icons/fa";
 
 const styles = {
   main: {
@@ -27,6 +30,8 @@ const styles = {
 };
 
 const Home = () => {
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({
@@ -86,7 +91,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="1150" data-aos-offset="0" style={{ width: '100%', fontSize: '30px', display: 'flex', justifyContent: 'center' }}>
+          <div data-aos="fade-up" data-aos-delay="1150" data-aos-offset="0" style={{ width: '100%', fontSize: '30px', marginBottom: '1%', display: 'flex', justifyContent: 'center' }}>
             <div style={{ width: '47.5%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
               <div style={{ width: '10%', marginRight: '3%', borderTop: '2px solid', borderBottom: '2px solid', borderRadius: 5 }} />
               Web developer
@@ -98,6 +103,11 @@ const Home = () => {
               Mobile developer
               <div style={{ width: '10%', marginLeft: '3%', borderTop: '2px solid', borderBottom: '2px solid', borderRadius: 5 }} />
             </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="1150" data-aos-offset="0" style={{ width: '100%', fontSize: '30px', display: 'flex', justifyContent: 'center' }}>
+            <button className="experiencesButton" onClick={() => navigate("/experiences")}>
+              My experiences&nbsp;<FaArrowRight style={{ color: 'white' }} />
+            </button>
           </div>
         </div>
         <div style={{ width: '5%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
